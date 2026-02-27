@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Publications</title>
+    <style>
+        /* Classic Academic Typography & Reset */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #222222;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Classic Link Colors */
+        a {
+            color: #0055aa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #cc0000;
+            text-decoration: underline;
+        }
+
+        /* Serif Headings for that "Document" feel */
+        h1,
+        h2,
+        h3 {
+            font-family: Georgia, "Times New Roman", Times, "Songti SC", "SimSun", serif;
+            color: #111111;
+            line-height: 1.35;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 0.3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Language Toggle Styles */
+        body.lang-zh .lang-en {
+            display: none !important;
+        }
+
+        body.lang-en .lang-zh {
+            display: none !important;
+        }
+
+        .lang-toggle {
+            cursor: pointer;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+
+        .lang-toggle:hover {
+            background: #e0e0e0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Simple top navigation */
+        .nav {
+            font-size: 0.95rem;
+        }
+
+        .nav a {
+            margin-right: 1.5rem;
+        }
+
+        /* Intro / Mission */
+        .intro-text {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        /* News Section */
+        .news-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-list li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            padding-left: 6.5rem;
+        }
+
+        .date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Publications Section */
+        .publication {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .pub-image {
+            width: 280px;
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+        }
+
+        .pub-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #dddddd;
+            /* Simple crisp border */
+            display: block;
+        }
+
+        .pub-details {
+            flex-grow: 1;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: #444444;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .pub-venue strong {
+            color: #b30000;
+            /* Subtle red for top venues */
+            font-style: normal;
+        }
+
+        /* Classic bracket links: [PDF] [Code] */
+        .pub-links {
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        .pub-links a {
+            text-decoration: none;
+        }
+
+        .pub-abstract {
+            font-size: 0.9rem;
+            color: #555555;
+            text-align: justify;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .publication {
+                flex-direction: column;
+            }
+
+            .pub-image {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .news-list li {
+                padding-left: 0;
+            }
+
+            .date {
+                position: static;
+                display: inline-block;
+                width: auto;
+                margin-right: 0.5rem;
+            }
+        }
+
+        .see-all-container {
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+
+
+        .see-all-btn {
+            display: inline-block;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .see-all-btn:hover {
+            background-color: #eeeeee;
+            color: #b30000;
+            border-color: #ccc;
+            text-decoration: none;
+        }
+
+        /* Clean Card Layouts */
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .card-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .card-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card-item {
+            background-color: #fcfcfc;
+            border-radius: 12px;
+            padding: 1.5rem 1.25rem;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card-item:hover {
+            background-color: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+            border-color: #e8e8e8;
+        }
+
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            color: #111;
+            font-weight: 600;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .card-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .card-item p.contact {
+            font-weight: 500;
+            color: #444;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .card-item p.contact i {
+            font-style: normal;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Mission Highlight */
+        .mission-statement {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin: 2.5rem 0;
+            max-width: 900px;
+            font-weight: 400;
+        }
+
+        .mission-statement .lang-zh {
+            text-align: justify;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: #777777;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <div class="container">
+        <div class="nav-container">
+            <div class="nav">
+                <a href="/#home"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
+                <a href="/#research"><span class="lang-en">Research</span><span
+                        class="lang-zh">研究方向</span></a>
+                <a href="/#news"><span class="lang-en">News</span><span
+                        class="lang-zh">近期动态</span></a>
+                <a href="/#publications"><span class="lang-en">Publications</span><span
+                        class="lang-zh">代表性成果</span></a>
+                <a href="/#team"><span class="lang-en">Team</span><span class="lang-zh">团队</span></a>
+            </div>
+            <button class="lang-toggle" id="lang-btn">中文 / EN</button>
+        </div>
+    </div>
+
+    <section class="section">
+    <div class="container">
+        <h1 id="all-publications"><span class="lang-en">All Publications</span><span class="lang-zh">全部代表性成果</span></h1>
+
+        <p style="margin-bottom: 2rem;">
+            <a href="/#publications" style="font-size: 0.95rem;">&larr; <span class="lang-en">Back to
+                    Home</span><span class="lang-zh">返回首页</span></a>
+        </p>
+
+        
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/Asset_1.png" alt="Discover Your Neighbors: Advanced Stable Test-Time Adaptation in Dynamic World">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">Discover Your Neighbors: Advanced Stable Test-Time Adaptation in Dynamic World</p>
+                <p class="pub-venue"><strong>NIPS 2025</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://openreview.net/pdf?id=bLXfEMe1Dk" target="_blank">Paper</a>]
+                    
+                    [<a href="https://github.com/Peanut-255/FIND" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    提出 DYN 框架，通过逐层实例统计聚类(LISC)和聚类感知批量归一化(CABN)实现动态测试时适应。作为首个无需反向传播的方法，处理批次内多重分布展现卓越鲁棒性，最高提升 35% 泛化性能。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/image 5.png" alt="MoETTA: Test-Time Adaptation Under Mixed Distribution Shifts with MoE-LayerNorm">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">MoETTA: Test-Time Adaptation Under Mixed Distribution Shifts with MoE-LayerNorm</p>
+                <p class="pub-venue"><strong>AAAI 2026</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://arxiv.org/abs/2511.13760v1" target="_blank">arXiv</a>]
+                    
+                    [<a href="https://github.com/AnikiFan/MoETTA" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    针对真实场景中复杂的混合分布偏移，提出 MoETTA 框架，引入专家混合(MoE)架构为不同域偏移提供结构解耦的多专家系统。在全新构建的 Potpourri 基准上全面超越现有基线。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/overviews.png" alt="COSMIC: Clique-Oriented Semantic Multi-space Integration for Robust CLIP Test-Time Adaptation">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">COSMIC: Clique-Oriented Semantic Multi-space Integration for Robust CLIP Test-Time Adaptation</p>
+                <p class="pub-venue"><strong>CVPR 2025</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://hf618.github.io/COSMIC_Project" target="_blank">Project</a>]
+                    
+                    [<a href="https://arxiv.org/abs/2509.23808" target="_blank">arXiv</a>]
+                    
+                    [<a href="https://github.com/hf618/COSMIC" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    针对视觉语言模型在测试时领域适应的性能退化，提出了创新 COSMIC 框架，通过多粒度、跨模态语义缓存和基于图的查询机制，显著增强模型适应能力。跨域测试任务性能提升 15.81%。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/image 2.png" alt="SD-GS: Structured Deformable 3D Gaussians for Efficient Dynamic Scene Reconstruction">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">SD-GS: Structured Deformable 3D Gaussians for Efficient Dynamic Scene Reconstruction</p>
+                <p class="pub-venue">ArXiv 2025</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://arxiv.org/abs/2507.07465" target="_blank">arXiv</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    引入可变形锚点网格，利用局部锚点生成 3D 高斯作为几何骨架，显著降低时空冗余。结合形变感知致密化策略，模型体积平均减少 60%，FPS 提升 100%。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/image 1.png" alt="EVOS: Efficient Implicit Neural Training via EVOlutionary Selector">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">EVOS: Efficient Implicit Neural Training via EVOlutionary Selector</p>
+                <p class="pub-venue"><strong>CVPR 2025</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://weixiang-zhang.github.io/proj-evos/" target="_blank">Project</a>]
+                    
+                    [<a href="https://arxiv.org/abs/2412.10153" target="_blank">arXiv</a>]
+                    
+                    [<a href="https://github.com/zwx-open/EVOS-INR" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    提出动态样本选择框架 EVOS，将样本坐标视为进化个体，通过稀疏适应度评估、间隔采样与缓存机制，大幅降低计算量。结合频率引导交叉和增强无偏变异，克服频谱偏差，训练时间减少 48%-66%。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/image.png" alt="Enhancing Implicit Neural Representations via Symmetric Power Transformation">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">Enhancing Implicit Neural Representations via Symmetric Power Transformation</p>
+                <p class="pub-venue"><strong>AAAI 2025</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://weixiang-zhang.github.io/proj-symtrans/" target="_blank">Project</a>]
+                    
+                    [<a href="https://arxiv.org/abs/2412.09213" target="_blank">arXiv</a>]
+                    
+                    [<a href="https://github.com/zwx-open/Symmetric-Power-Transformation-INR" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    创新性地提出“对称幂变换”，基于“范围定义对称假设”，通过非线性可逆变换重构数据分布，同时完成范围约束与对称化。在零额外成本的前提下，解决了极端偏差放大与边界断裂难题，并在 ImageNet 上斩获最佳 PSNR/SSIM 指标。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/image 4.png" alt="SizeGS: Size-aware Compression of 3D Gaussian Splatting via Mixed Integer Programming">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">SizeGS: Size-aware Compression of 3D Gaussian Splatting via Mixed Integer Programming</p>
+                <p class="pub-venue"><strong>ACM MM 2025</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://shuzhaoxie.github.io/sizegs/" target="_blank">Project</a>]
+                    
+                    [<a href="https://arxiv.org/abs/2412.05808" target="_blank">arXiv</a>]
+                    
+                    [<a href="https://github.com/mmlab-sigs/SizeGS" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    基于混合整数规划的尺寸感知压缩框架，旨在通过快速搜索超参数将 3DGS 压缩至预定大小。能在一分钟内搜索到满足尺寸约束的最佳参数，实现 SOTA 级别的离线压缩性能。
+                </p>
+            </div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-image">
+                <img src="/assets/images/publications/image 3.png" alt="MesonGS: Post-training Compression of 3D Gaussians via Efficient Attribute Transformation">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">MesonGS: Post-training Compression of 3D Gaussians via Efficient Attribute Transformation</p>
+                <p class="pub-venue"><strong>ECCV 2024</strong> (CCF-A)</p>
+                <div class="pub-links">
+                    
+                    [<a href="https://shuzhaoxie.github.io/mesongs/" target="_blank">Project</a>]
+                    
+                    [<a href="https://arxiv.org/abs/2409.09756" target="_blank">arXiv</a>]
+                    
+                    [<a href="https://github.com/ShuzhaoXie/MesonGS" target="_blank">Code</a>]
+                    
+                </div>
+                <p class="pub-abstract">
+                    一种高效的后训练 3D 高斯压缩编解码器。引入视点相关与无关重要性度量标准，结合属性变换（如RAHT）和块量化策略，在大幅压缩体积的同时保留高质量渲染。
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+    <div class="container">
+        <footer>
+            <span class="lang-en">&copy; 2025 Self-Evolving Embodied Agents Group.</span><span class="lang-zh">&copy;
+                2025
+                自我进化具身智能体小组</span><br>
+            <span class="lang-en">Tsinghua University Shenzhen International Graduate School</span><span
+                class="lang-zh">清华大学深圳国际研究生院</span>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('lang-btn').addEventListener('click', function () {
+            if (document.body.classList.contains('lang-en')) {
+                document.body.classList.replace('lang-en', 'lang-zh');
+                document.documentElement.lang = 'zh-CN';
+            } else {
+                document.body.classList.replace('lang-zh', 'lang-en');
+                document.documentElement.lang = 'en';
+            }
+        });
+    </script>
+</body>
+
+</html>

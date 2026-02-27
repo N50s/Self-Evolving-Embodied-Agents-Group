@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <style>
+        /* Classic Academic Typography & Reset */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #222222;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Classic Link Colors */
+        a {
+            color: #0055aa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #cc0000;
+            text-decoration: underline;
+        }
+
+        /* Serif Headings for that "Document" feel */
+        h1,
+        h2,
+        h3 {
+            font-family: Georgia, "Times New Roman", Times, "Songti SC", "SimSun", serif;
+            color: #111111;
+            line-height: 1.35;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 0.3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Language Toggle Styles */
+        body.lang-zh .lang-en {
+            display: none !important;
+        }
+
+        body.lang-en .lang-zh {
+            display: none !important;
+        }
+
+        .lang-toggle {
+            cursor: pointer;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+
+        .lang-toggle:hover {
+            background: #e0e0e0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Simple top navigation */
+        .nav {
+            font-size: 0.95rem;
+        }
+
+        .nav a {
+            margin-right: 1.5rem;
+        }
+
+        /* Intro / Mission */
+        .intro-text {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        /* News Section */
+        .news-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-list li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            padding-left: 6.5rem;
+        }
+
+        .date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Publications Section */
+        .publication {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .pub-image {
+            width: 280px;
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+        }
+
+        .pub-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #dddddd;
+            /* Simple crisp border */
+            display: block;
+        }
+
+        .pub-details {
+            flex-grow: 1;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: #444444;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .pub-venue strong {
+            color: #b30000;
+            /* Subtle red for top venues */
+            font-style: normal;
+        }
+
+        /* Classic bracket links: [PDF] [Code] */
+        .pub-links {
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        .pub-links a {
+            text-decoration: none;
+        }
+
+        .pub-abstract {
+            font-size: 0.9rem;
+            color: #555555;
+            text-align: justify;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .publication {
+                flex-direction: column;
+            }
+
+            .pub-image {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .news-list li {
+                padding-left: 0;
+            }
+
+            .date {
+                position: static;
+                display: inline-block;
+                width: auto;
+                margin-right: 0.5rem;
+            }
+        }
+
+        .see-all-container {
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+
+
+        .see-all-btn {
+            display: inline-block;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .see-all-btn:hover {
+            background-color: #eeeeee;
+            color: #b30000;
+            border-color: #ccc;
+            text-decoration: none;
+        }
+
+        /* Clean Card Layouts */
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .card-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .card-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card-item {
+            background-color: #fcfcfc;
+            border-radius: 12px;
+            padding: 1.5rem 1.25rem;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card-item:hover {
+            background-color: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+            border-color: #e8e8e8;
+        }
+
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            color: #111;
+            font-weight: 600;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .card-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .card-item p.contact {
+            font-weight: 500;
+            color: #444;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .card-item p.contact i {
+            font-style: normal;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Mission Highlight */
+        .mission-statement {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin: 2.5rem 0;
+            max-width: 900px;
+            font-weight: 400;
+        }
+
+        .mission-statement .lang-zh {
+            text-align: justify;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: #777777;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <div class="container">
+        <div class="nav-container">
+            <div class="nav">
+                <a href="{{ site.baseurl }}/#home"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
+                <a href="{{ site.baseurl }}/#research"><span class="lang-en">Research</span><span
+                        class="lang-zh">研究方向</span></a>
+                <a href="{{ site.baseurl }}/#news"><span class="lang-en">News</span><span
+                        class="lang-zh">近期动态</span></a>
+                <a href="{{ site.baseurl }}/#publications"><span class="lang-en">Publications</span><span
+                        class="lang-zh">代表性成果</span></a>
+                <a href="{{ site.baseurl }}/#team"><span class="lang-en">Team</span><span class="lang-zh">团队</span></a>
+            </div>
+            <button class="lang-toggle" id="lang-btn">中文 / EN</button>
+        </div>
+    </div>
+
+    {{ content }}
+
+    <div class="container">
+        <footer>
+            <span class="lang-en">&copy; 2025 Self-Evolving Embodied Agents Group.</span><span class="lang-zh">&copy;
+                2025
+                自我进化具身智能体小组</span><br>
+            <span class="lang-en">Tsinghua University Shenzhen International Graduate School</span><span
+                class="lang-zh">清华大学深圳国际研究生院</span>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('lang-btn').addEventListener('click', function () {
+            if (document.body.classList.contains('lang-en')) {
+                document.body.classList.replace('lang-en', 'lang-zh');
+                document.documentElement.lang = 'zh-CN';
+            } else {
+                document.body.classList.replace('lang-zh', 'lang-en');
+                document.documentElement.lang = 'en';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,722 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Self-Evolving Embodied Agents Group（自进化具身智能体小组）</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="314f88ac-5ea3-818c-b2a8-f0ce40cc92da" class="page sans"><header><h1 class="page-title" dir="auto">Self-Evolving Embodied Agents Group（自进化具身智能体小组）</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="314f88ac-5ea3-80fe-bbec-cd6d272ed031"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-801f-af2a-edd266e4a310" class=""><strong>Self-Evolving Embodied Agents Group</strong> is a dynamic research collective at the forefront of artificial intelligence. Our vision is to create intelligent agents that can perceive, reason, and act in complex, real-world environments—agents that continuously learn and adapt, seamlessly bridging the gap between the digital and physical worlds.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80fc-9ef1-df760aaddac1" class=""><strong>自我进化具身智能体小组</strong>是一个走在人工智能前沿的充满活力的研究集体。我们的愿景是创造能够在复杂的现实世界环境中感知、推理和行动的智能体——能够持续学习和适应，无缝连接数字与物理世界的智能体。</p></div><div style="display:contents" dir="auto"><h2 id="314f88ac-5ea3-802a-87d2-f3a4759b4136" class="block-color-yellow">Our Mission / 我们的使命</h2></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-802b-90cd-da364a35b702" class="">Our mission is to establish a complete pipeline for creating self-evolving embodied agents, from efficient data preparation and multimodal perception to spatiotemporal decision-making and continuous learning. We aim to solve the fundamental challenges of embodied intelligence and enable robots to learn and operate robustly in the real world. By integrating cutting-edge research in 3D vision, world models, and large language models, we are building the foundation for the next generation of intelligent systems.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-800e-91d6-d04923dd4b8d" class="">我们的使命是建立一个完整的自我进化具身智能体创建流程，从高效数据制备和多模态感知到时空决策和持续学习。我们旨在解决具身智能的根本挑战，使机器人能够在现实世界中稳健地学习和操作。通过整合三维视觉、世界模型和大语言模型领域的尖端研究，我们正在为下一代智能系统奠定基础。</p></div></div></figure></div><div style="display:contents" dir="auto"><hr id="314f88ac-5ea3-80cb-a663-f84f1a35cb9a"/></div><div style="display:contents" dir="auto"><h2 id="314f88ac-5ea3-8007-acca-f19f44647c95" class="">Research Directions / 研究方向</h2></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8061-95e7-e21f4935e857" class="">Our research is organized around four interconnected pillars that form a closed loop of data, perception, decision, and learning.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80bd-8e9c-e7cd34c4573b" class="">我们的研究围绕四个相互关联的支柱展开，形成一个数据、感知、决策和进化的闭环。</p></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-809b-8715-e48261b6c523" class="">Efficient Embodied Data Preparation / 高效具身数据制备</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8063-ae8f-fdd78375d33f" class="">We focus on creating high-quality data for training embodied agents. Our work in this area includes:</p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80e0-92ee-d5ebd5baa96e" class="bulleted-list"><li style="list-style-type:disc"><strong>3D Reconstruction</strong>: Developing advanced techniques for reconstructing 3D scenes from various sensory inputs, including implicit neural representations and 3D Gaussian splatting.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80df-95c0-d32250d2192f" class="bulleted-list"><li style="list-style-type:disc"><strong>World Models</strong>: Building generative models that can simulate and predict the dynamics of the physical world.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80a2-bfec-dacf1503c79b" class="bulleted-list"><li style="list-style-type:disc"><strong>Human Motion Generation</strong>: Synthesizing realistic human motions for animation and robotics.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8092-82ac-e8acc55037ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Interactive Scene Generation</strong>: Creating interactive 3D scenes using VLMs and LLMs.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8070-95b3-df54a0f51533" class="bulleted-list"><li style="list-style-type:disc"><strong>Trajectory Data Synthesis</strong>: Generating diverse and realistic trajectory data for robot learning.</li></ul></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-8004-9bbd-dcab256fe218" class="">Multimodal Fine-grained Perception / 多模态细粒度大模型感知</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80b7-b0f3-c661d141e52e" class="">We aim to build perception systems that can understand the world at a fine-grained level. Key research topics include:</p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-806c-aae6-f7da124153b4" class="bulleted-list"><li style="list-style-type:disc"><strong>Vision-Language Models</strong>: Developing large models that can jointly understand visual and textual information.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80f0-b1d5-cae80a812c2d" class="bulleted-list"><li style="list-style-type:disc"><strong>Fine-grained Visual Understanding</strong>: Enabling models to perceive and reason about detailed visual attributes and relationships.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8099-a61a-f1dd3688df67" class="bulleted-list"><li style="list-style-type:disc"><strong>Multimodal Fusion</strong>: Integrating information from multiple sensory modalities for robust perception.</li></ul></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-809a-a623-d54ff031678e" class="">Spatiotemporal Decision-Making / 时空大模型决策规划</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8017-bbb7-e3a59fd44530" class="">We are committed to developing intelligent decision-making systems for embodied agents. Our research in this area covers:</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-808c-805b-d6857b2d26ac" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-808a-a5a9-c8c5610b912a" class="bulleted-list"><li style="list-style-type:disc"><strong>Robot Policy Learning</strong>: Training robot policies that can make decisions in complex spatiotemporal environments.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80b0-be58-f9189754f343" class="bulleted-list"><li style="list-style-type:disc"><strong>Sim-to-Real Transfer</strong>: Transferring learned policies from simulation to the real world.</li></ul></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-809e-99b0-e054128a568b" class="">Agent Continuous Learning / 智能体持续学习</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-801c-a238-e2d521a63e80" class="">We apply our research to enable agents to continuously learn and adapt. This includes:</p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-801f-af21-ed7c0b2e05c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Test-time Adaptation</strong>: Updating models online during inference to improve generalization.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8030-8b4c-ff2fe8180230" class="bulleted-list"><li style="list-style-type:disc"><strong>Continuous Learning</strong>: Enabling models to learn from a continuous stream of data without forgetting past knowledge.</li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8084-9cff-cb932ae37501" class="bulleted-list"><li style="list-style-type:disc"><strong>LLM Generalization and Fine-tuning</strong>: Addressing data drift and hallucination in large language models.</li></ul></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8059-ba79-d3b1bfacb76d" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="314f88ac-5ea3-809d-ba7d-d378f79f7ed0"/></div><div style="display:contents" dir="auto"><h2 id="314f88ac-5ea3-804d-91af-f53cc863d71d" class="">Recent News / 近期动态</h2></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80af-9bc9-d79bdec5ff4d" class="block-color-red"><strong>News! 2025.02.28</strong>: Congratulations! Our paper <strong>COSMIC</strong> was accepted by CVPR 2025 (CCF-A).</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-807d-8519-c5edd1489957" class="block-color-red"><strong>News! 2025.03.03</strong>: Congratulations! Our paper <strong>LLM4Band</strong> was accepted by NOSSDAV 2025 (CCF-B).</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80ac-8ee9-d9600daea415" class="block-color-red"><strong>News! 2025.03.21</strong>: Congratulations! Our paper <strong>DATTA</strong> was accepted by ICME 2025 (CCF-B).</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80bf-8451-cdcd59c1373c" class="block-color-red"><strong>News! 2025.09.18</strong>: Congratulations! Our paper <strong>FIND</strong> was accepted by NIPS 2025 (CCF-A).</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80cf-b517-da3927d23601" class=""><mark class="highlight-red"><strong>News! 2025.11.08</strong></mark><mark class="highlight-red">: Congratulations! Our paper </mark><mark class="highlight-red"><strong>MoETTA</strong></mark><mark class="highlight-red"> was accepted by AAAI 2026 (CCF-A).</mark></p></div><div style="display:contents" dir="auto"><hr id="314f88ac-5ea3-80dc-8e26-e524f6f02e41"/></div><div style="display:contents" dir="auto"><h2 id="314f88ac-5ea3-800b-b2ea-c474a520ffdb" class="">Selected Publications / 代表性成果</h2></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-80ea-834b-d3e2f655d771" class="">Efficient Embodied Data Preparation / 高效具身数据制备 </h3></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-807c-adec-dcea16272a76" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80c2-9aa6-c8bda7ebc75b" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-806e-bc03-fd042dc80173" class="image" style="text-align:center"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image.png"><img style="width:336px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8002-91de-d101e2cd9efe" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80bd-b1b6-c6814cf04ce7" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8095-94eb-f40812d1b6f6" class=""><strong>Enhancing Implicit Neural Representations via Symmetric Power Transformation</strong>, <mark class="highlight-red"><strong>AAAI 2025 (CCF-A)</strong></mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8041-a5ac-ca512c78392b" class="bulleted-list"><li style="list-style-type:disc">Project Page: <a href="https://weixiang-zhang.github.io/proj-symtrans/">https://weixiang-zhang.github.io/proj-symtrans/</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8067-82ab-c72f576b644b" class="bulleted-list"><li style="list-style-type:disc">Paper: <a href="https://ojs.aaai.org/index.php/AAAI/article/view/33102">https://ojs.aaai.org/index.php/AAAI/article/view/33102</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-808f-8613-df9e4fb4930f" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2412.09213">https://arxiv.org/abs/2412.09213</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8046-9d2d-e0987e3d0d77" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/zwx-open/Symmetric-Power-Transformation-INR">https://github.com/zwx-open/Symmetric-Power-Transformation-INR</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-80b6-98e4-f0e713cdcb69" class="">现有隐式神经表示（INR）技术面临着高资源消耗与低编码效率的双重挑战，且传统数据变换方法难以兼顾信号连续性与存储开销。本文创新性地提出<mark class="highlight-red"><strong>“对称幂变换”</strong></mark>，基于“范围定义对称假设”，通过非线性可逆变换重构数据分布，同时完成范围约束与对称化。该方法进一步引入<strong>偏差感知校准与自适应软边界机制</strong>，在零额外成本的前提下，解决了极端偏差放大与边界断裂难题。广泛的实验（涵盖 1D 音频至 3D 视频）证实了该方法的优越性：在 ImageNet 数据集上斩获最佳 PSNR/SSIM 指标，并显著降低 FLOPs。该方案为实现高效、无损的 INR 训练提供了一种超越现有技术的新范式。</blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-808d-89cd-c75603a3b69f" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-806c-b808-c24e6cfd77f2" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-8043-a4b0-de583676828e" class="image"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%201.png"><img style="width:528px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8053-8907-f640a43374aa" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-809d-af8e-c2d30d736d94" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8087-aafb-c7eca316b871" class=""><strong>EVOS: Efficient Implicit Neural Training via EVOlutionary Selector</strong>, <mark class="highlight-red"><strong>CVPR 2025 (CCF-A)</strong></mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8072-8a12-f161d2e0007c" class="bulleted-list"><li style="list-style-type:disc">Project Page: <a href="https://weixiang-zhang.github.io/proj-evos/">https://weixiang-zhang.github.io/proj-evos/</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8077-9b4a-c954309ee911" class="bulleted-list"><li style="list-style-type:disc">Paper: <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Zhang_EVOS_Efficient_Implicit_Neural_Training_via_EVOlutionary_Selector_CVPR_2025_paper.pdf">https://openaccess.thecvf.com/content/CVPR2025/papers/Zhang_EVOS_Efficient_Implicit_Neural_Training_via_EVOlutionary_Selector_CVPR_2025_paper.pdf</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-800f-bad9-d52881efbfb6" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2412.10153">https://arxiv.org/abs/2412.10153</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80c6-890f-c4ecb1003790" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/zwx-open/EVOS-INR">https://github.com/zwx-open/EVOS-INR</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-8020-911d-f84000a3f09f" class="">为解决INR训练计算冗余和频谱偏差问题，本文提出<mark class="highlight-red"><strong>动态样本选择框架EVOS</strong></mark>。EVOS将样本坐标视为进化个体，通过<strong>稀疏适应度评估、间隔采样与缓存机制</strong>，大幅降低计算量并高效筛选关键样本。结合<strong>频率引导交叉和增强无偏变异</strong>，EVOS平衡高低频信息，克服频谱偏差，消除选择偏差。该框架兼容多种骨干网络，实验显示<strong>训练时间减少48%-66%</strong>，性能超越现有方法，达到采样加速新SOTA。</blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-807c-8423-e34ea1f9eb72" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-806c-a44f-e7c3ebbb5430" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-8005-9b57-ea391b4a00ca" class="image"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%202.png"><img style="width:432px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%202.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-803c-892e-c01c6d711b7d" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-803a-922a-d9a9d4749372" class=""><strong>SD-GS: Structured Deformable 3D Gaussians for Efficient Dynamic Scene Reconstruction</strong>, <mark class="highlight-red"><strong>ArXiv 2025</strong></mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-806f-aeff-c893a6608222" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2507.07465">https://arxiv.org/abs/2507.07465</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-803a-b178-c3cc105f0270" class=""><mark class="highlight-default">针对动态场景重建中存储成本与运动表征的矛盾，本文提出紧凑高效的SD-GS框架。SD-GS</mark><mark class="highlight-red"><strong>引入可变形锚点网格</strong></mark><mark class="highlight-default">，利用</mark><mark class="highlight-default"><strong>局部锚点</strong></mark><mark class="highlight-default">生成3D高斯作为</mark><mark class="highlight-default"><strong>几何骨架</strong></mark><mark class="highlight-default">，显著降低时空冗余。结合</mark><mark class="highlight-default"><strong>形变感知致密化策略</strong></mark><mark class="highlight-default">，SD-GS自适应生长高动态区域的锚点，抑制静态区域冗余。实验显示，SD-GS模型体积平均减少60%，FPS提升100%，在保持高视觉质量的同时显著提升了计算效率。</mark></blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-8045-8aa6-ed2b31a4965a" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-8047-a17c-dbdc8a726884" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-80ce-bade-d08ad026a816" class="image" style="text-align:center"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%203.png"><img style="width:528px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%203.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80be-a2da-ccfb95432e7b" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8085-a7e1-e75406fa5085" class=""><strong>MesonGS: Post-training Compression of 3D Gaussians via Efficient Attribute Transformation</strong>, <mark class="highlight-red"><strong>ECCV 2024 (CCF-B)</strong></mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-806d-963e-c340e5434244" class="bulleted-list"><li style="list-style-type:disc">Project Page:  <a href="https://shuzhaoxie.github.io/mesongs/">https://shuzhaoxie.github.io/mesongs/</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-806e-bfe5-c77773d4c3d0" class="bulleted-list"><li style="list-style-type:disc">Paper: <a href="https://link.springer.com/chapter/10.1007/978-3-031-73414-4_25">https://link.springer.com/chapter/10.1007/978-3-031-73414-4_25</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8098-bc0b-d444ee64eef6" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2409.09756">https://arxiv.org/abs/2409.09756</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80da-9310-d62d66240d15" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/ShuzhaoXie/MesonGS">https://github.com/ShuzhaoXie/MesonGS</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-80ff-be94-ece9ec59d41e" class="">3D高斯泼溅（3DGS）虽然渲染质量出色，但其巨大的文件体积严重阻碍了存储与传输，且现有压缩方法往往依赖耗时的再训练或忽略了属性间的空间冗余。本文提出了<strong>MesonGS</strong>，一种高效的<mark class="highlight-red"><strong>后训练3D高斯压缩编解码器</strong></mark>。该方法首先引入了一种结合视点相关与无关因素的<strong>重要性度量标准</strong>，用于精准剪枝非显著点。随后，通过<strong>属性变换</strong>策略降低熵值：用欧拉角替代旋转四元数，并利用区域自适应层次变换（RAHT）处理关键属性。最后结合<strong>块量化（Block Quantization）</strong>与精心设计的微调方案，避免了过度信息丢失。MesonGS实现了在大幅压缩文件体积的同时，有效保留了具有竞争力的渲染质量。</blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80f1-a468-d6f89cdd8d36" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-807f-b505-f36febdcca8e" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-80d4-a74e-fab5b68cb61f" class="image"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%204.png"><img style="width:480px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%204.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-808f-880e-f17657e32c38" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80d4-974a-de31d4666074" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8014-80d8-ce8e6dc39963" class=""><strong>SizeGS: Size-aware Compression of 3D Gaussian Splatting via Mixed Integer Programming</strong>,<mark class="highlight-red"><strong> ACM MM 2025 (CCF-A)</strong></mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8021-9a4b-d3f8bdff8256" class="bulleted-list"><li style="list-style-type:disc">Project Page: <a href="https://shuzhaoxie.github.io/sizegs/">https://shuzhaoxie.github.io/sizegs/</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80ad-bb01-ed46dba13ac0" class="bulleted-list"><li style="list-style-type:disc">Paper: <a href="https://shuzhaoxie.github.io/data/25-mm-sizegs.pdf">https://shuzhaoxie.github.io/data/25-mm-sizegs.pdf</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-803b-92a9-ca3ee958f1e3" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2412.05808">https://arxiv.org/abs/2412.05808</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80cb-8444-e654ac9a9789" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/mmlab-sigs/SizeGS">https://github.com/mmlab-sigs/SizeGS</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-80e7-8866-f36d4144ffd9" class="">针对3DGS数据量大且现有压缩技术难以适应波动网络带宽的痛点，本文提出了<strong>SizeGS</strong>，一种基于<mark class="highlight-red"><strong>混合整数规划的尺寸感知压缩框架</strong></mark>，旨在通过快速搜索超参数将3DGS压缩至预定大小。SizeGS将超参数优化问题建模为<strong>混合整数非线性规划（MINLP）</strong>，并通过解耦策略将其拆分为高斯保留率的离散采样与位宽设置的<strong>整数线性规划（ILP）</strong>。为了加速求解，引入了质量损失估计器与校准尺寸估计器，并实现了并行量化的CUDA内核。实验表明，SizeGS能在一分钟内搜索到满足尺寸约束的最佳参数，实现了SOTA级别的离线压缩性能，并可与微调后的在线方法相媲美。</blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-80b9-95cf-edc699647d62" class="">Multimodal Fine-grained Perception / 持续学习 </h3></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-8095-926b-d5501a46ae16" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80a9-bcbb-e9e829e8c8ea" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-8066-a70d-ec9f8686e733" class="image"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/overviews.png"><img style="width:720px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/overviews.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-809e-bcc0-c2a47e8c8871" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-804d-82f6-cdfc971118e3" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8063-a3c6-ed9f19448240" class=""><strong>COSMIC: Clique-Oriented Semantic Multi-space Integration for Robust CLIP Test-Time Adaptation</strong>,<mark class="highlight-red"> CVPR 2025 (CCF-A)</mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80ea-83ae-d2063c4b90dd" class="bulleted-list"><li style="list-style-type:disc">Project Page: <a href="https://hf618.github.io/COSMIC_Project">https://hf618.github.io/COSMIC_Project</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8052-bc79-eadd863a7d34" class="bulleted-list"><li style="list-style-type:disc">Paper: <a href="https://openaccess.thecvf.com/content/CVPR2025/html/Huang_COSMIC_Clique-Oriented_Semantic_Multi-space_Integration_for_Robust_CLIP_Test-Time_Adaptation_CVPR_2025_paper.html">https://openaccess.thecvf.com/content/CVPR2025/html/Huang_COSMIC_Clique-Oriented_Semantic_Multi-space_Integration_for_Robust_CLIP_Test-Time_Adaptation_CVPR_2025_paper.html</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-805f-b7ed-f4010372e7bf" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2509.23808">https://arxiv.org/abs/2509.23808</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-804a-87e9-f810776f96e2" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/hf618/COSMIC">https://github.com/hf618/COSMIC</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-80f8-bb0c-dd4de2f2aaf6" class="">视觉语言模型（VLMs）在测试时面临适应新领域的挑战，尤其是在测试样本分布偏离训练数据时，性能会显著下降。本研究提出了创新的<strong>COSMIC</strong>框架，通过多粒度、跨模态语义缓存和基于图的查询机制，增强模型在测试时的适应能力。COSMIC在多个基准测试上表现优异，显著超越现有的最先进方法：<mark class="highlight-red"><strong>跨域测试任务</strong></mark><mark class="highlight-red">性能提升</mark><mark class="highlight-red"><strong>15.81%</strong></mark><mark class="highlight-red">。</mark><mark class="highlight-red"><strong>跨域生成任务</strong></mark><mark class="highlight-red">性能提升</mark><mark class="highlight-red"><strong>5.33%</strong></mark><mark class="highlight-red">。</mark></blockquote></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8083-85d5-fe18fb4fc350" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-803f-9f5d-feeb6e769a38" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-809c-84a3-c4f8ad5f5e21" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-80c7-92f0-d105a9115dfe" class="image"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/Asset_1.png"><img style="width:720px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/Asset_1.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-809d-b291-c930ea40e6be" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8077-97c1-c07b0e6a1f30" class=""><strong>Discover Your Neighbors: Advanced Stable Test-Time Adaptation in Dynamic World</strong>, <mark class="highlight-red">NIPS 2025 (CCF-A)</mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80d8-a0cf-f33f5a949fc0" class="bulleted-list"><li style="list-style-type:disc">Paper: <a href="https://openreview.net/pdf?id=bLXfEMe1Dk">https://openreview.net/pdf?id=bLXfEMe1Dk</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80ac-9868-f4ff7711954e" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/Peanut-255/FIND">https://github.com/Peanut-255/FIND</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-80b2-b589-e1d5a6f39e99" class=""><mark class="highlight-default">本研究提出了创新性的DYN框架，旨在解决深度神经网络在训练-测试域分布偏移下的性能退化问题。该方法通过逐层实例统计聚类(LISC)和聚类感知批量归一化(CABN)两大核心机制实现动态测试时适应。LISC基于实例归一化统计的余弦相似度进行特征层面的样本聚类，而CABN则通过融合源域与测试批次的归一化统计来增强目标分布的特征表征能力。作为首个无需反向传播的动态TTA方法，DYN在处理批次内多重分布时展现出卓越的鲁棒性和性能优势， </mark><mark class="highlight-red"><strong>最高提升 35% 的泛化性能。</strong></mark></blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80ce-85d8-fce1c1fc6d51" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-809a-8b89-e38ba0200c3a" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-80a8-a119-d14fc4703832" class="image" style="text-align:center"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/icme-25-icme-overview1.png"><img style="width:384px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/icme-25-icme-overview1.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-805c-bf16-fdc8fd4fcd36" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80f4-9b47-f5aafd0a8f99" class=""><strong>DATTA: Domain Diversity Aware Test-Time Adaptation for Dynamic Domain Shift Stream, </strong><mark class="highlight-red">ICME 2025 (CCF-B, Oral)</mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8018-b41a-cbc44a347afe" class="bulleted-list"><li style="list-style-type:disc">Paper:  <a href="https://ieeexplore.ieee.org/document/11209053">https://ieeexplore.ieee.org/document/11209053</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-806c-97bc-e3f5082db63a" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2408.08056">https://arxiv.org/abs/2408.08056</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8068-92a7-d65d972db363" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/DYW77/DATTA">https://github.com/DYW77/DATTA</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-80a7-bf66-cf3462e6b665" class="">本文提出了<strong>MergTTA</strong>，一种面向多源测试时适应（MS-TTA）的新方法，用于解决深度神经网络在训练与测试数据域偏移下的表现退化问题。MergTTA利用多个预训练模型，通过动态融合辅助任务向量并结合无监督熵损失，实现实时域适应，无需更新基础模型。实验结果表明，MergTTA在长期适应中比单源TTA方法表现更优，展现了更强的鲁棒性和性能。</blockquote></div></div></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-8054-ad94-e5ff9f7c0cb9" class="column-list"><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-8025-ae6c-d475df31fd87" style="width:31.25%" class="column"><div style="display:contents" dir="ltr"><figure id="314f88ac-5ea3-8053-bac8-e49d9c713464" class="image"><a href="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%205.png"><img style="width:15718px" src="Self-Evolving%20Embodied%20Agents%20Group%EF%BC%88%E8%87%AA%E8%BF%9B%E5%8C%96%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E7%BB%84%EF%BC%89/image%205.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="314f88ac-5ea3-80a9-bb34-d0d3daa78d22" style="width:68.75%" class="column"><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80e2-8966-f68bcc5649ad" class=""><strong>MoETTA: Test-Time Adaptation Under Mixed Distribution Shifts with MoE-LayerNorm, </strong><mark class="highlight-red"><strong>AAAI 2026 (CCF-A)</strong></mark></p></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8094-9322-c2d735660cae" class="bulleted-list"><li style="list-style-type:disc">arXiv: <a href="https://arxiv.org/abs/2511.13760v1">https://arxiv.org/abs/2511.13760v1</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8027-a6ed-faf94257ec3f" class="bulleted-list"><li style="list-style-type:disc">Code: <a href="https://github.com/AnikiFan/MoETTA">https://github.com/AnikiFan/MoETTA</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8052-b8c1-dfc923fc4ae2" class="bulleted-list"><li style="list-style-type:disc">Poster: <a href="https://xiaofan.ac.cn/assets/poster/AAAI2026.pdf">https://xiaofan.ac.cn/assets/poster/AAAI2026.pdf</a></li></ul></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-8076-927c-f19b647caa46" class="">真实部署场景中，模型常面临混合分布偏移挑战——测试样本同时受到多种异质域因素影响。传统测试时适应(TTA)方法依赖单一适应路径，无法应对不同域的梯度方向差异。本研究提出创新性的MoETTA框架，通过引入专家混合(MoE)架构，为不同类型的分布偏移提供结构解耦的多专家系统，实现沿多样化梯度方向灵活适应。我们构建了两个新基准：Potpourri涵盖自然、艺术、对抗等多样化域偏移，Potpourri+进一步评估抗灾难性遗忘能力。实验表明，MoETTA<mark class="highlight-red">在三种混合分布偏移设置下全面超越强基线方法</mark>，树立了新的最先进性能标杆。</blockquote></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80cd-b0af-e495d35d6604" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><hr id="314f88ac-5ea3-8008-b5a4-d1cd7b34c367"/></div><div style="display:contents" dir="auto"><h2 id="314f88ac-5ea3-80a9-923e-f1ff6f4375aa" class="">Team / 团队</h2></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80bc-bc83-cf889ace2dfa" class="">Our group is led by Professor Zhi Wang from Tsinghua University Shenzhen International Graduate School.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8041-b4de-f180ab2be6fa" class="">我们的小组由清华大学深圳国际研究生院王智教授领导。</p></div><div style="display:contents" dir="auto"><blockquote id="314f88ac-5ea3-8043-a6ee-cea4b09a11b6" class="">✉️ Contact Information / 联系方式</blockquote></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-803b-bbc9-dc803f34b98e" class="bulleted-list"><li style="list-style-type:disc"><strong>Zhi Wang (王智)</strong>, Associate Professor<div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8064-b71b-e9f545f0490a" class="bulleted-list"><li style="list-style-type:circle">Personal Website: <a href="https://www.mmlab.top/">https://www.mmlab.top/</a></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-805e-acf3-c8c99b6cf924" class="bulleted-list"><li style="list-style-type:circle">Email: <a href="mailto:wangzhi@sz.tsinghua.edu.cn">wangzhi@sz.tsinghua.edu.cn</a></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-8059-93e9-e2025338250f" class="bulleted-list"><li style="list-style-type:disc"><strong>Jingyan Jiang (姜婧妍)</strong><div style="display:contents" dir="auto"><ul id="314f88ac-5ea3-80b6-86be-e84923d3c0f8" class="bulleted-list"><li style="list-style-type:circle">Email: <a href="mailto:jiangjingyan@sztu.edu.cn">jiangjingyan@sztu.edu.cn</a></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><hr id="314f88ac-5ea3-80c0-a58a-ed98203a751a"/></div><div style="display:contents" dir="auto"><h2 id="314f88ac-5ea3-80d9-a6f9-d0c261be73f6" class="">Join Us / 加入我们</h2></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8038-bed0-fd6cac9e4c3d" class="">We are always looking for passionate and talented students to join our team. If you are interested in shaping the future of embodied AI, we encourage you to apply.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8098-b1dc-e4a1c53a617d" class="">我们一直在寻找有热情和才华的学生加入我们的团队。如果您对塑造具身人工智能的未来感兴趣，我们鼓励您申请。</p></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-8071-9785-deddf22964da" class="">Undergraduate Students / 本科生</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8013-985c-eaadff401805" class="">We welcome undergraduate researchers at all class levels from Tsinghua, HIT-SZ, SUSTech, and other universities. While it is not a requirement, a background in related areas (e.g., AI, EE, math, robotics, computer vision) and excellent grades are preferred. If you are interested, please email <strong>Shuzhao Xie</strong> with your CV and (unofficial) transcript.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8035-ba58-c624694e9773" class="">我们欢迎来自清华、哈工大深圳、南科大等高校各年级的本科生研究者。虽然不是必须的，但相关领域的背景（如人工智能、电子工程、数学、机器人、计算机视觉）和优秀的成绩是加分项。如有兴趣，请将简历和（非官方）成绩单发送给<strong>谢书昭</strong>。</p></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-800d-bdfa-f182f75e45e0" class="">Masters and PhD Students / 硕士和博士生</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80ef-b351-fe5585709c2d" class="">Prospective PhD students or Post-docs should reach out to <strong>Professor Zhi Wang</strong> directly. We cannot reply to every inquiry, but you can email us with the words Prospective Student in the subject line, and attach a CV and links to any papers that represent your research interests.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80ad-b42b-d4a57e50b320" class="">有意申请博士和博士后的同学请直接与<strong>王智教授</strong>联系。我们无法回复每一封询问邮件，但您可以在邮件主题中注明Prospective Student，并附上简历和代表您研究兴趣的论文链接。</p></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-8042-90b7-e95769566be6" class="">Interns and Visiting Scholars / 实习生和访问学者</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-806b-925a-c7c768d17fef" class="">Prospective interns can contact <strong>Jingyan Jiang</strong>. Please email with your CV, transcript, research statement, and links to any papers that represent your research interests.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80ad-8e98-e183671e00d1" class="">有意申请实习的同学请联系<strong>姜婧妍</strong>。请在邮件中附上简历、成绩单、研究陈述以及代表您研究兴趣的论文链接。</p></div><div style="display:contents" dir="auto"><h3 id="314f88ac-5ea3-80ad-ab7c-fd419b28ba40" class="">Corporate Collaboration / 企业合作</h3></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80bf-8a81-fcc69887d63d" class="">Prospective business partners should contact <strong>Professor Zhi Wang</strong> directly.</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-8044-b630-e640253c79c4" class="">有意合作的商业机构请直接与<strong>王智教授</strong>联系。</p></div><div style="display:contents" dir="auto"><p id="314f88ac-5ea3-80f8-a617-fdb30e7df492" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

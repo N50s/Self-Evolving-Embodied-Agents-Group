@@ -1,0 +1,215 @@
+---
+layout: default
+---
+
+<section class="section">
+    <div class="container">
+        <h1 id="home"><span class="lang-en">Self-Evolving Embodied Agents Group</span><span
+                class="lang-zh">自我进化具身智能体小组</span>
+        </h1>
+
+        <p class="mission-statement">
+            <span class="lang-en">Our mission is to establish a complete pipeline for creating self-evolving embodied
+                agents, from efficient data preparation and multimodal perception to spatiotemporal decision-making and
+                continuous learning. We aim to solve the fundamental challenges of embodied intelligence and enable
+                robots to learn and operate robustly in the real world. By integrating cutting-edge research in 3D
+                vision, world models, and large language models, we are building the foundation for the next generation
+                of intelligent systems.</span>
+            <span
+                class="lang-zh">我们的使命是建立一个完整的自我进化具身智能体创建流程，从高效数据制备和多模态感知到时空决策和持续学习。我们旨在解决具身智能的根本挑战，使机器人能够在现实世界中稳健地学习和操作。通过整合三维视觉、世界模型和大语言模型领域的尖端研究，我们正在为下一代智能系统奠定基础。</span>
+        </p>
+    </div>
+</section>
+
+<section class="section bg-alt" id="research">
+    <div class="container">
+        <h2 style="margin-bottom: 0.2rem;"><span class="lang-en">Research Directions</span><span
+                class="lang-zh">研究方向</span></h2>
+        <p class="lang-en" style="color: #666; font-size: 0.95rem; margin-top: 0; margin-bottom: 2.5rem;">Our research
+            is organized around four interconnected pillars that form a closed loop of data, perception, decision, and
+            learning.</p>
+        <p class="lang-zh" style="color: #666; font-size: 0.95rem; margin-top: 0; margin-bottom: 2.5rem;">
+            我们的研究围绕四个相互关联的支柱展开，形成一个数据、感知、决策和进化的闭环。</p>
+
+        <div class="research-list">
+            <div class="research-item">
+                <h3 style="margin-bottom: 0.2rem;"><span class="lang-en">Efficient Embodied Data Preparation</span><span
+                        class="lang-zh">高效具身数据制备</span></h3>
+                <p class="lang-en" style="color: #444; font-size: 0.95rem; margin-top: 0; margin-bottom: 0.8rem;">We
+                    focus on creating high-quality data for training embodied agents. Our work in this area includes:
+                </p>
+                <div class="research-tags lang-en">
+                    <span>3D Reconstruction</span>
+                    <span>World Models</span>
+                    <span>Human Motion Generation</span>
+                    <span>Interactive Scene Generation</span>
+                    <span>Trajectory Data Synthesis</span>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <h3 style="margin-bottom: 0.2rem;"><span class="lang-en">Multimodal Fine-grained Perception</span><span
+                        class="lang-zh">多模态细粒度大模型感知</span></h3>
+                <p class="lang-en" style="color: #444; font-size: 0.95rem; margin-top: 0; margin-bottom: 0.8rem;">We aim
+                    to build perception systems that can understand the world at a fine-grained level. Key research
+                    topics include:</p>
+                <div class="research-tags lang-en">
+                    <span>Vision-Language Models</span>
+                    <span>Fine-grained Visual Understanding</span>
+                    <span>Multimodal Fusion</span>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <h3 style="margin-bottom: 0.2rem;"><span class="lang-en">Spatiotemporal Decision-Making</span><span
+                        class="lang-zh">时空大模型决策规划</span></h3>
+                <p class="lang-en" style="color: #444; font-size: 0.95rem; margin-top: 0; margin-bottom: 0.8rem;">We are
+                    committed to developing intelligent decision-making systems for embodied agents. Our research in
+                    this area covers:</p>
+                <div class="research-tags lang-en">
+                    <span>Robot Policy Learning</span>
+                    <span>Sim-to-Real Transfer</span>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <h3 style="margin-bottom: 0.2rem;"><span class="lang-en">Agent Continuous Learning</span><span
+                        class="lang-zh">智能体持续学习</span></h3>
+                <p class="lang-en" style="color: #444; font-size: 0.95rem; margin-top: 0; margin-bottom: 0.8rem;">We
+                    apply our research to enable agents to continuously learn and adapt. This includes:</p>
+                <div class="research-tags lang-en">
+                    <span>Test-time Adaptation</span>
+                    <span>Continuous Learning</span>
+                    <span>LLM Generalization and Fine-tuning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="news">
+    <div class="container">
+        <h2><span class="lang-en">Recent News</span><span class="lang-zh">近期动态</span></h2>
+        <ul class="news-list">
+            {% for item in site.data.news %}
+            <li>
+                <span class="date">{{ item.date }}</span>
+                <span class="lang-en">{{ item.en_html }}</span>
+                <span class="lang-zh">{{ item.zh_html }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<section class="section bg-alt" id="publications">
+    <div class="container">
+        <h2><span class="lang-en">Selected Publications</span><span class="lang-zh">代表性成果</span></h2>
+
+        {% assign selected_pubs = site.data.publications | where: "selected", true | sort: "date" | reverse %}
+        {% for pub in selected_pubs %}
+        <div class="publication">
+            <div class="pub-image">
+                <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}">
+            </div>
+            <div class="pub-details">
+                <p class="pub-title">{{ pub.title }}</p>
+                <p class="pub-venue">{{ pub.venue_html }}</p>
+                <div class="pub-links">
+                    {% for link in pub.links %}
+                    [<a href="{{ link.url }}" target="_blank">{{ link.label }}</a>]
+                    {% endfor %}
+                </div>
+                <p class="pub-abstract">
+                    {{ pub.abstract }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="see-all-container">
+            <a href="{{ site.baseurl }}/publications.html" class="see-all-btn">
+                <span class="lang-en">See All Publications &rarr;</span>
+                <span class="lang-zh">查看全部成果 &rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="team">
+    <div class="container">
+        <h2><span class="lang-en">Team</span><span class="lang-zh">团队</span></h2>
+
+        <h3><span class="lang-en">Principal Investigator</span><span class="lang-zh">指导老师</span></h3>
+        <ul>
+            <li>
+                <b>Zhi Wang (王智)</b>, <span class="lang-en">Associate Professor, Tsinghua University Shenzhen
+                    International Graduate School</span><span class="lang-zh">副教授，清华大学深圳国际研究生院</span><br>
+                <a href="https://www.mmlab.top/" target="_blank"><span class="lang-en">Personal Website</span><span
+                        class="lang-zh">个人主页</span></a> | Email: wangzhi@sz.tsinghua.edu.cn
+            </li>
+            <li>
+                <b>Jingyan Jiang (姜婧妍)</b><br>
+                Email: jiangjingyan@sztu.edu.cn
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section bg-alt" id="join-us">
+    <div class="container">
+        <h2><span class="lang-en">Join Us</span><span class="lang-zh">加入我们</span></h2>
+        <p class="lang-en">We are always looking for passionate and talented students to join our team. If you are
+            interested in shaping the future of embodied AI, we encourage you to apply!</p>
+        <p class="lang-zh">我们一直在寻找有热情和才华的学生加入我们的团队。如果您对塑造具身人工智能的未来感兴趣，我们鼓励您申请。</p>
+        <div class="card-list">
+            <div class="card-item">
+                <h3 class="card-title">
+                    <span class="lang-en">Undergraduates</span>
+                    <span class="lang-zh">本科生</span>
+                </h3>
+                <p class="lang-en">Students with a strong background in math, AI, programming, or robotics are welcome.
+                </p>
+                <p class="lang-zh">欢迎数理或计算机基础扎实的同学加入课题组参与科研。</p>
+                <p class="contact"><span class="lang-en">📩 Contact <i>Shuzhao Xie</i></span><span class="lang-zh">📩 联系
+                        <i>谢书昭</i></span></p>
+            </div>
+
+            <div class="card-item">
+                <h3 class="card-title">
+                    <span class="lang-en">Masters & PhDs</span>
+                    <span class="lang-zh">硕博研究生</span>
+                </h3>
+                <p class="lang-en">Please include "Prospective Student" in your email subject with your CV and sample
+                    code/papers.</p>
+                <p class="lang-zh">发送简历及代表作，邮件标题请注 “Prospective Student”。</p>
+                <p class="contact"><span class="lang-en">📩 Contact <i>Prof. Zhi Wang</i></span><span class="lang-zh">📩
+                        联系 <i>王智教授</i></span></p>
+            </div>
+
+            <div class="card-item">
+                <h3 class="card-title">
+                    <span class="lang-en">Interns & Visiting</span>
+                    <span class="lang-zh">实习 / 访问学者</span>
+                </h3>
+                <p class="lang-en">We invite bright minds worldwide for cutting-edge collaborative research in embodied
+                    AI.</p>
+                <p class="lang-zh">诚邀海内外优秀学者合作交流，共同推进具身智能前沿研究。</p>
+                <p class="contact"><span class="lang-en">📩 Contact <i>Jingyan Jiang</i></span><span class="lang-zh">📩
+                        联系
+                        <i>姜婧妍</i></span></p>
+            </div>
+
+            <div class="card-item">
+                <h3 class="card-title">
+                    <span class="lang-en">Corporate</span>
+                    <span class="lang-zh">企业合作</span>
+                </h3>
+                <p class="lang-en">Open to robotics deployment and industrial technology collaborations.</p>
+                <p class="lang-zh">开放探讨大模型工业落地、前沿算法研发与核心技术转化合作。</p>
+                <p class="contact"><span class="lang-en">📩 Contact <i>Prof. Zhi Wang</i></span><span class="lang-zh">📩
+                        联系 <i>王智教授</i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
