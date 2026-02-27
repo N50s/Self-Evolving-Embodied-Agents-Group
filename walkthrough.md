@@ -18,7 +18,7 @@ The project has been successfully migrated to Jekyll following recommended best 
 
 4. **Simplified [index.html](file:///Users/yfn/Downloads/Private%20&%20Shared%203/index.html)**:
    - The homepage [index.html](file:///Users/yfn/Downloads/Private%20&%20Shared%203/index.html) was refactored. It now tells Jekyll to use the `default` layout via YAML front matter.
-   - It utilizes Liquid loops (`{% for item in site.data.news %}`) to render the lists, significantly shortening the file and making the content logic crystal clear.
+   - It utilizes Liquid loops (`{% raw %}{% for item in site.data.news %}{% endraw %}`) to render the lists, significantly shortening the file and making the content logic crystal clear.
 
 5. **Backup Saved**:
    - Your original fully-static file was archived to `index_archive.html`.
