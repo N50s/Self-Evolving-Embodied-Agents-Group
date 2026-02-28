@@ -251,6 +251,56 @@
             text-decoration: none;
         }
 
+        /* Team Layout */
+        .team-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .team-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .team-info {
+            flex-grow: 1;
+        }
+
+        .team-info h4 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .team-info p {
+            margin: 0 0 0.3rem 0;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        @media screen and (max-width: 600px) {
+            .team-member {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+
         /* Clean Card Layouts */
         .card-list {
             display: grid;
