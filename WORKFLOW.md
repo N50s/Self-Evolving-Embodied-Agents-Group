@@ -1,38 +1,52 @@
-# 网站日常维护工作流 (Website Maintenance Workflow)
+# 网站日常维护与更新指南 (Website Maintenance Guide)
 
-这个文档将指导你如何进行 Jekyll 网站的日常维护，特别是关于存放图片、添加或移除代表性成果（Publications）等操作。
+这份文档将指导你如何在未来独立地进行各个版块的内容更新、样式微调以及最终的网站发布。
 
-## 1. 文件夹结构介绍
+## 1. 核心文件与结构介绍
 
-你的网站现在是一个遵循最佳实践的 Jekyll 项目：
+你的网站是由 Jekyll 引擎驱动的，主要的代码和数据被分成了以下几个核心模块：
 
-- `_data/`：存放了结构化的数据。
+- `_data/`：存放了网页里循环展示的**纯数据内容**（不需要改代码，只需填空）。
   - `news.yml`：新闻动态数据。
   - `publications.yml`：所有的代表性成果数据。
-- `_layouts/`：存放了页面的公共布局。
-  - `default.html`：网站的基础框架（包含页眉、页脚、导航栏等）。
-- `assets/images/publications/`：专门用于存放论文预览图的文件夹。
-- `index.html`：网站首页，会展示带有 `selected: true` 标记的精选成果。
-- `publications.html`：展示全部论文成果的子页面。
+- `_layouts/`：存放了页面的**公共排版框架**。
+  - `default.html`：网站的基础框架（包含吸顶导航栏、毛玻璃特效、底部版权、中英文切换的 JavaScript 等）。
+- `assets/images/`：所有的图片资产。
+  - `team/`：团队成员的头像照片。
+  - `publications/`：论文的预览展示图。
+- `index.html`：**网站首页结构**。包含课题组介绍、Team 成员列表和 Join Us 卡片。
 
 ---
 
-## 2. 如何添加一篇新的论文 (Publication)
+## 2. 团队成员 (Team) 管理
 
-假设你有一篇新的论文需要添加到网站上：
+团队成员的展示代码直接写在根目录的 `index.html` 的 `<div class="team-section">` 区域内。
 
-### 第一步：保存论文图片
-将论文的预览图（例如命名为 `new-paper-2026.png`）放入 `assets/images/publications/` 文件夹中。
+### 想要添加或修改头像？
+1. 将照片存入 `assets/images/team/` 文件夹（建议为正方形或比例不要太极端的长方形，jpg/png 均可）。
+2. 在 `index.html` 里找到对应人的 `<img>` 标签，修改 `src` 路径。
 
-### 第二步：更新数据文件
-打开 `_data/publications.yml`，在文件的最上方（或者你希望它展示的位置）添加以下格式的数据块（注意 YAML 的缩进）：
+**关键技巧：如何调整头像由于自动圆形裁剪导致的“脸部偏离”？**
+由于 CSS 使用了 `object-fit: cover` 强制裁成正圆，如果人脸不在照片正中心，你需要去代码里微调“聚焦点”坐标：
+```html
+<img src="..." alt="..." class="team-photo" style="object-position: 70% 20%;">
+```
+- 第一个数字 `70%`：代表**左右**的偏移（0%代表死死贴住左边，100%代表贴住最右侧）。如果是竖图，这个数字怎么改都没用。
+- 第二个数字 `20%`：代表**上下**的偏移（0%是对准头顶，100%是对准脚底）。如果是横平图，这个数字怎么改都没用。
 
+---
+
+## 3. 代表性成果 (Publications) 管理
+
+所有的科研成果都集中存放在 `_data/publications.yml`，你**绝对不需要去改复杂的 HTML** 来新增论文，只需要在这个文件里“照猫画虎”地填空即可。
+
+### 插入新论文的固定格式（注意缩进对齐）：
 ```yaml
-- image: "new-paper-2026.png"
-  selected: true # 如果展示在首页设为 true，仅在子页展示设为 false
-  date: "2026-12-01" # 关键：网页将根据这里的时间数值进行自动倒序排列（越新的在越上面）
+- image: "new-paper-2026.png" # 图片放在 assets/images/publications/
+  selected: true # true: 首页和子页都展示; false: 仅在"全部成果"子页展示
+  date: "2026-12-01" # 关键：网页将严格根据这里的年月进行自动倒序排列
   title: "论文的完整英文标题"
-  venue_html: "<strong>会议或期刊名称</strong> (例如 CCF-A)"
+  venue_html: "<strong>会刊缩写</strong> (例如 CCF-A, Oral)"
   links:
     - label: "Project"
       url: "https://你的项目主页链接..."
@@ -40,61 +54,50 @@
       url: "https://arxiv.org/abs/..."
     - label: "Code"
       url: "https://github.com/..."
-  abstract: "这里是论文的简介或摘要，支持中文或英文。"
+  abstract: "论文摘要简介，支持直接写文字。"
 ```
 
-*如果你不需要某个链接（例如还没开源 Code），直接把关于 Code 的那两行删掉即可。*
-
-**原理解读（进阶操作）：自动获取 arXiv 论文时间**
-
-为了避免每次手动输入日期的麻烦，我为你编写了一个特殊的自动化小工具：`update_dates.py`。
-当你在 YAML 中添加好论文后，如果这篇论文包含 arXiv 的链接（`label: "arXiv"`），那么你**其实不需要手动填写 `date`**，而是可以直接在终端运行以下命令：
-
-```bash
-python3 update_dates.py
-```
-
-这个工具会自动读取你填写的网址，向 arXiv 的官方数据库发起请求，提取真实的发布/更新日期（精确到年月日），然后自动写回你的 `_data/publications.yml` 中！之后网站再编译时，就会依据这个完美的真实日期来进行完美排序。
+> **特别提醒：自动更新日期脚本**
+> 只要你填写的链接里有一个是 `label: "arXiv"` 的 arxiv 官网链接，你连 `date` 都不用自己去查！
+> 直接在终端运行 `python3 update_dates.py`，这个爬虫脚本会自动帮你抓取 arXiv 最新发布时间并写到 yml 里供排序使用！
 
 ---
 
-## 3. 如何撤下（隐藏）一篇论文
+## 4. 近期动态 (News) 管理
 
-如果你想将某篇论文从网站上彻底隐藏，你有两种方式：
-
-- **方式一（临时隐藏某篇论文不让它在首页展示，但保留在子页面中）：**
-  只需将这篇论文在 `_data/publications.yml` 中的 `selected: true` 改为 `selected: false`。
-
-- **方式二（从网站彻底下架，推荐注释法）：**
-  如果不想在任何页面（包括子页面）展示这篇论文，在 `_data/publications.yml` 中，找到对应的论文代码块，在每一行前面加上 `#` 号将其注释掉。如果想恢复，把 `#` 删掉就行了。
-  
-  ```yaml
-  # - image: "old-paper.png"
-  #   selected: false
-  #   title: "旧论文标题"
-  #   venue_html: "..."
-  ```
-
----
-
-## 4. 如何更新“近期动态” (News)
-
-和论文类似，新闻动态存放在 `_data/news.yml` 中。要发布一条新动态，只需在最前面添加：
-
+存放在 `_data/news.yml` 中。格式同样非常简单，且支持双语分离：
 ```yaml
 - date: "2026.12.01"
-  en_html: "Our new paper was accepted!"
-  zh_html: "祝贺！我们的新论文被接收。"
+  en_html: "Our new paper was accepted to CVPR!"
+  zh_html: "祝贺！我们的新论文被 CVPR 2026 接收。"
 ```
 
 ---
 
-## 5. 本地预览你的修改
+## 5. 样式微调手册 (Advanced CSS)
 
-在你修改了图片或者 `.yml` 文件后，如果你当前正在终端运行着：
+如果你临时起意想微调网页的外观，所有的核心设计参数都在 `_layouts/default.html` 文件顶部的 `<style>` 标签内。
+
+- **修改毛玻璃导航栏的透明度**：搜索 `background-color: rgba(255, 255, 255,`，把后面的数字 `0.9` 改成 `0.5`（更透明） 或 `1.0`（纯白不透明）。
+- **修改文字大小或边距**：搜索诸如 `font-size` 或 `margin-bottom` 属性即可。
+
+---
+
+## 6. 如何发布你的网站 (GitHub Pages 部署)
+
+你的网站目前完美搭载在原生的 GitHub Pages 框架中，**你没有任何服务器或域名的续费烦恼**。
+
+### 标准发布流程 (Push to Deploy)
+你在本地（`http://127.0.0.1:4000/Self-Evolving-Embodied-Agents-Group/`）确认一切修改和新增文字都无误之后，只需要在终端运行这三条终极命令：
 
 ```bash
-bundle exec jekyll serve
+# 这一条命令代表：将所有增加的新图片和改动的文字添加到打包车中并贴上提交标签
+git add . && git commit -m "Update publications and team members"
+
+# 这一条命令代表：把代码车推送到云端仓库
+git push
 ```
 
-Jekyll 会**自动检测**到文件的修改，并重新生成网站（注意：如果是修改了 `_config.yml` 则需要重启命令，修改 `_data` 里的文件通常会自动刷新）。刷新浏览器 `http://127.0.0.1:4000/` 即可看到最新效果！
+**推送完毕后需要做什么？**
+**什么都不需要做。** 你只需要去泡一杯茶，等待 1~2 分钟。GitHub 后台会自动拦截你的推送，帮你把它实时编译成网页并强行覆盖线上的旧网站。
+2分钟后刷新你的网址：`https://[你的GitHub账号].github.io/Self-Evolving-Embodied-Agents-Group/`，你的最新成果就会展示在全世界面前了。
