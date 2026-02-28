@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Classic Academic Typography & Reset */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -35,6 +39,7 @@
             font-family: Georgia, "Times New Roman", Times, "Songti SC", "SimSun", serif;
             color: #111111;
             line-height: 1.35;
+            scroll-margin-top: 5rem;
         }
 
         /* Sans-serif Subheadings */
@@ -45,6 +50,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
             color: #222222;
             line-height: 1.35;
+            scroll-margin-top: 5rem;
         }
 
         h1 {
@@ -100,6 +106,16 @@
             display: flex;
             align-items: center;
             margin-bottom: 2rem;
+
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: -1rem;
         }
 
         /* Simple top navigation */
@@ -314,7 +330,7 @@
         .card-list {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
             margin-top: 1.5rem;
             margin-bottom: 2.5rem;
         }
@@ -334,9 +350,11 @@
         .card-item {
             background-color: #fcfcfc;
             border-radius: 12px;
-            padding: 1.5rem 1.25rem;
+            padding: 1.25rem 1rem;
             transition: all 0.3s ease;
             border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-item:hover {
@@ -348,8 +366,8 @@
 
         .card-title {
             margin-top: 0;
-            margin-bottom: 1rem;
-            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
             color: #111;
             font-weight: 600;
             border-bottom: none;
@@ -358,16 +376,18 @@
 
         .card-item p {
             margin-bottom: 0;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: #555;
-            line-height: 1.5;
+            line-height: 1.6;
+            text-align: left;
         }
 
         .card-item p.contact {
             font-weight: 500;
             color: #444;
-            margin-top: 1.2rem;
-            font-size: 0.9rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            font-size: 0.85rem;
         }
 
         .card-item p.contact i {
@@ -401,21 +421,17 @@
 </head>
 
 <body class="lang-en">
-
-    <div class="container">
-        <div class="nav-container">
-            <div class="nav">
-                <a href="{{ site.baseurl }}/#home"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
-                <a href="{{ site.baseurl }}/#research"><span class="lang-en">Research</span><span
-                        class="lang-zh">研究方向</span></a>
-                <a href="{{ site.baseurl }}/#news"><span class="lang-en">News</span><span
-                        class="lang-zh">近期动态</span></a>
-                <a href="{{ site.baseurl }}/#publications"><span class="lang-en">Publications</span><span
-                        class="lang-zh">代表性成果</span></a>
-                <a href="{{ site.baseurl }}/#team"><span class="lang-en">Team</span><span class="lang-zh">团队</span></a>
-            </div>
-            <button class="lang-toggle" id="lang-btn">中文 / EN</button>
+    <div class="nav-container">
+        <div class="nav">
+            <a href="{{ site.baseurl }}/#home"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
+            <a href="{{ site.baseurl }}/#research"><span class="lang-en">Research</span><span
+                    class="lang-zh">研究方向</span></a>
+            <a href="{{ site.baseurl }}/#news"><span class="lang-en">News</span><span class="lang-zh">近期动态</span></a>
+            <a href="{{ site.baseurl }}/#publications"><span class="lang-en">Publications</span><span
+                    class="lang-zh">代表性成果</span></a>
+            <a href="{{ site.baseurl }}/#team"><span class="lang-en">Team</span><span class="lang-zh">团队</span></a>
         </div>
+        <button class="lang-toggle" id="lang-btn">中文 / EN</button>
     </div>
 
     {{ content }}
