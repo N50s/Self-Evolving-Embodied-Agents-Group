@@ -16,17 +16,6 @@ layout: default
         class="lang-zh">我们的使命是建立一个完整的自我进化具身智能体创建流程，从高效数据制备和多模态感知到时空决策和持续学习。我们旨在解决具身智能的根本挑战，使机器人能够在现实世界中稳健地学习和操作。通过整合三维视觉、世界模型和大语言模型领域的尖端研究，我们正在为下一代智能系统奠定基础。</span>
 </p>
 
-<h2 id="news"><span class="lang-en">Recent News</span><span class="lang-zh">近期动态</span></h2>
-<ul class="news-list">
-    {% for item in site.data.news %}
-    <li>
-        <span class="date">{{ item.date }}</span>
-        <span class="lang-en">{{ item.en_html }}</span>
-        <span class="lang-zh">{{ item.zh_html }}</span>
-    </li>
-    {% endfor %}
-</ul>
-
 <h2 id="research"><span class="lang-en">Research Directions</span><span class="lang-zh">研究方向</span></h2>
 <ul>
     <li>
@@ -46,6 +35,17 @@ layout: default
         <b><span class="lang-en">Agent Continuous Learning</span><span class="lang-zh">智能体持续学习</span>:</b>
         <span class="lang-en">Test-time Adaptation, Continuous Learning, LLM Generalization and Fine-tuning.</span>
     </li>
+</ul>
+
+<h2 id="news"><span class="lang-en">Recent News</span><span class="lang-zh">近期动态</span></h2>
+<ul class="news-list">
+    {% for item in site.data.news %}
+    <li>
+        <span class="date">{{ item.date }}</span>
+        <span class="lang-en">{{ item.en_html }}</span>
+        <span class="lang-zh">{{ item.zh_html }}</span>
+    </li>
+    {% endfor %}
 </ul>
 
 <h2 id="publications"><span class="lang-en">Selected Publications</span><span class="lang-zh">代表性成果</span></h2>
@@ -90,7 +90,8 @@ layout: default
     </li>
     <li>
         <b>Jingyan Jiang (姜婧妍)</b><br>
-        Email: jiangjingyan@sztu.edu.cn
+        <a href="https://www.jiangjingyan.com/" target="_blank"><span class="lang-en">Personal Website</span><span
+                class="lang-zh">个人主页</span></a> | Email: jiangjingyan@sztu.edu.cn
     </li>
 </ul>
 
