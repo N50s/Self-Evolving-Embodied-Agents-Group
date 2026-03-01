@@ -494,7 +494,8 @@ layout: default
 {% for pub in selected_pubs %}
 <div class="publication">
     <div class="pub-image">
-        <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}">
+        <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}"
+            loading="lazy">
     </div>
     <div class="pub-details">
         <p class="pub-title">{{ pub.title }}</p>
@@ -525,7 +526,7 @@ layout: default
     <!-- Zhi Wang -->
     <div class="team-member">
         <img src="{{ site.baseurl }}/assets/images/team/zhi_wang.jpg" alt="Zhi Wang" class="team-photo"
-            style="object-position: 70% 20%;">
+            style="object-position: 70% 20%;" loading="lazy">
         <div class="team-info">
             <h4>Zhi Wang (王智)</h4>
             <p>
@@ -552,7 +553,7 @@ layout: default
 <!-- Jingyan Jiang -->
 <div class="team-member">
     <img src="{{ site.baseurl }}/assets/images/team/jingyan_jiang.jpg" alt="Jingyan Jiang" class="team-photo"
-        style="object-position: 70% 20%;">
+        loading="lazy" style="object-position: 70% 20%;">
     <div class="team-info">
         <h4>Jingyan Jiang (姜婧妍)</h4>
         <p>

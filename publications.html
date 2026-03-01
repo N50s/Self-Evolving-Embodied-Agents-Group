@@ -15,7 +15,8 @@ title: All Publications
 {% for pub in sorted_pubs %}
 <div class="publication">
     <div class="pub-image">
-        <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}">
+        <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}"
+            loading="lazy">
     </div>
     <div class="pub-details">
         <p class="pub-title">{{ pub.title }}</p>
