@@ -105,3 +105,4 @@
     - label: Code
       url: https://github.com/ShuzhaoXie/MesonGS
   abstract: 一种高效的后训练 3D 高斯压缩编解码器。引入视点相关与无关重要性度量标准，结合属性变换（如RAHT）和块量化策略，在大幅压缩体积的同时保留高质量渲染。
+  
