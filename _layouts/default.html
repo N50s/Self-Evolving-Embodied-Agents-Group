@@ -80,16 +80,7 @@
             border-radius: 2px;
         }
 
-        /* Full-width section wrappers */
-        .section-wrapper {
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            padding: 3rem calc((100vw - 960px)/2 + 1.5rem);
-        }
 
-        .section-alt {
-            background-color: #f8f9fa;
-        }
 
         h3 {
             font-size: 1.15rem;
@@ -202,14 +193,11 @@
             position: relative;
             margin-bottom: 0;
             padding: 0.75rem 0 0.75rem 6.5rem;
-            border-left: 3px solid transparent;
-            transition: all 0.2s ease;
+            transition: background-color 0.2s ease;
         }
 
         .news-list li:hover {
-            background-color: rgba(10, 25, 47, 0.03);
-            border-left-color: #0a192f;
-            padding-left: 7rem;
+            background-color: rgba(10, 25, 47, 0.015);
         }
 
         .date {
@@ -241,13 +229,12 @@
             border-radius: 10px;
             border: 1px solid #eee;
             background: #ffffff;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: border-color 0.15s ease;
         }
 
         .publication:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-            transform: translateY(-2px);
-            border-color: #ddd;
+            border-color: #ccc;
         }
 
         .pub-image {
@@ -264,11 +251,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .publication:hover .pub-image img {
-            transform: scale(1.03);
         }
 
         .pub-details {
@@ -304,7 +286,7 @@
 
         .pub-links a {
             text-decoration: none;
-            color: #0a192f;
+            color: #0055aa;
             transition: color 0.2s ease;
         }
 
@@ -536,15 +518,16 @@
         }
 
         footer {
-            margin-top: 0;
-            padding: 3rem 0;
+            margin-top: 3rem;
+            margin-bottom: -2rem;
+            padding: 2.5rem 0;
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.6);
             text-align: center;
             background-color: #0a192f;
+            line-height: 1.8;
             width: 100vw;
             margin-left: calc(-50vw + 50%);
-            line-height: 1.8;
         }
 
         footer a {
@@ -637,15 +620,11 @@
 
     {{ content }}
 
-    <div class="container">
-        <footer>
-            <span class="lang-en">&copy; 2025 Self-Evolving Embodied Agents Group.</span><span class="lang-zh">&copy;
-                2025
-                自我进化具身智能体小组</span><br>
-            <span class="lang-en">Tsinghua University Shenzhen International Graduate School</span><span
-                class="lang-zh">清华大学深圳国际研究生院</span>
-        </footer>
     </div>
+
+    <footer>
+        <span>MMLab@SIGS, 2026</span>
+    </footer>
 
     <script>
         document.getElementById('lang-btn').addEventListener('click', function () {

@@ -18,20 +18,8 @@ layout: default
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 0;
+        margin-bottom: 4rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-wrapper::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 120px;
-        background: linear-gradient(to bottom, transparent, #ffffff);
-        z-index: 3;
-        pointer-events: none;
     }
 
     #particle-canvas {
@@ -180,10 +168,10 @@ layout: default
     }
 
     .mission-heading-line {
-        width: 60px;
-        height: 4px;
+        width: 40px;
+        height: 3px;
         background-color: #0a192f;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         border-radius: 2px;
     }
 
@@ -374,119 +362,117 @@ layout: default
     });
 </script>
 
-<div class="section-wrapper section-alt">
-    <h2 id="research"><span class="lang-en">Research Directions</span><span class="lang-zh">研究方向</span></h2>
-    <div class="research-grid">
-        <div class="research-item">
-            <div class="research-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <ellipse cx="12" cy="5" rx="9" ry="3" />
-                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                </svg>
-            </div>
-            <div class="research-content">
-                <h3>
-                    <span class="lang-en en-title">Efficient Embodied Data Preparation</span>
-                    <span class="lang-zh zh-title">高效具身数据制备</span>
-                </h3>
-                <p>
-                    <span class="lang-en">We develop innovative methods for efficient collection, annotation, and
-                        preprocessing of embodied AI data. We focus on creating high-quality datasets that enable robust
-                        robot learning in real-world environments.</span>
-                    <span class="lang-zh">我们开发创新的方法以前沿、高效的方式收集、标注和处理具身AI数据。我们专注于创建高质量数据集，以在现实环境中实现鲁棒的机器人学习。</span>
-                </p>
-            </div>
-            <div class="research-tags">
-                <span class="research-tag">Automated Pipelines</span>
-                <span class="research-tag">Synthetic-to-Real</span>
-                <span class="research-tag">Active Learning</span>
-            </div>
+<h2 id="research"><span class="lang-en">Research Directions</span><span class="lang-zh">研究方向</span></h2>
+<div class="research-grid">
+    <div class="research-item">
+        <div class="research-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
         </div>
-
-        <div class="research-item">
-            <div class="research-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                    <circle cx="12" cy="12" r="3" />
-                </svg>
-            </div>
-            <div class="research-content">
-                <h3>
-                    <span class="lang-en en-title">Multimodal Perception & World Models</span>
-                    <span class="lang-zh zh-title">多模态感知与世界模型</span>
-                </h3>
-                <p>
-                    <span class="lang-en">We build comprehensive world models through multimodal sensory fusion and
-                        understanding. Our research enables agents to perceive and reason about complex 3D environments
-                        using multiple modalities.</span>
-                    <span class="lang-zh">我们通过多模态感知融合建立全面的世界模型。我们的研究使智能体能够使用多模态感知和推理复杂的3D环境。</span>
-                </p>
-            </div>
-            <div class="research-tags">
-                <span class="research-tag">3D Vision</span>
-                <span class="research-tag">Sensor Fusion</span>
-                <span class="research-tag">World Modeling</span>
-            </div>
+        <div class="research-content">
+            <h3>
+                <span class="lang-en en-title">Efficient Embodied Data Preparation</span>
+                <span class="lang-zh zh-title">高效具身数据制备</span>
+            </h3>
+            <p>
+                <span class="lang-en">We develop innovative methods for efficient collection, annotation, and
+                    preprocessing of embodied AI data. We focus on creating high-quality datasets that enable robust
+                    robot learning in real-world environments.</span>
+                <span class="lang-zh">我们开发创新的方法以前沿、高效的方式收集、标注和处理具身AI数据。我们专注于创建高质量数据集，以在现实环境中实现鲁棒的机器人学习。</span>
+            </p>
         </div>
-
-        <div class="research-item">
-            <div class="research-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                        d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
-                    <path
-                        d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
-                </svg>
-            </div>
-            <div class="research-content">
-                <h3>
-                    <span class="lang-en en-title">Spatiotemporal Decision Making</span>
-                    <span class="lang-zh zh-title">时空决策与机器人策略学习</span>
-                </h3>
-                <p>
-                    <span class="lang-en">We train robot policies that can make intelligent decisions in complex
-                        spatiotemporal environments. Our work bridges the gap between simulation and real-world
-                        deployment
-                        through robust policy learning.</span>
-                    <span class="lang-zh">我们致力于训练能够在复杂时空环境中做出智能决策的机器人策略模型。我们的研究通过鲁棒策略学习弥合了仿真与现实部署的差距。</span>
-                </p>
-            </div>
-            <div class="research-tags">
-                <span class="research-tag">Imitation Learning</span>
-                <span class="research-tag">Reinforcement Learning</span>
-                <span class="research-tag">Sim-to-Real</span>
-            </div>
+        <div class="research-tags">
+            <span class="research-tag">Automated Pipelines</span>
+            <span class="research-tag">Synthetic-to-Real</span>
+            <span class="research-tag">Active Learning</span>
         </div>
+    </div>
 
-        <div class="research-item">
-            <div class="research-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                    <path d="M3 3v5h5" />
-                </svg>
-            </div>
-            <div class="research-content">
-                <h3>
-                    <span class="lang-en en-title">Agent Continuous Learning</span>
-                    <span class="lang-zh zh-title">智能体持续学习</span>
-                </h3>
-                <p>
-                    <span class="lang-en">We enable agents to continuously learn and adapt to new environments and tasks
-                        without catastrophic forgetting. Our research addresses the fundamental challenges of lifelong
-                        learning in embodied AI.</span>
-                    <span class="lang-zh">我们让智能体能够不断学习并适应新环境和新任务。我们的研究应对了具身AI的持续学习的基础挑战，从而避免灾难性遗忘。</span>
-                </p>
-            </div>
-            <div class="research-tags">
-                <span class="research-tag">Test-time Adaptation</span>
-                <span class="research-tag">Continual Learning</span>
-                <span class="research-tag">LLM Adaptation</span>
-            </div>
+    <div class="research-item">
+        <div class="research-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                <circle cx="12" cy="12" r="3" />
+            </svg>
+        </div>
+        <div class="research-content">
+            <h3>
+                <span class="lang-en en-title">Multimodal Perception & World Models</span>
+                <span class="lang-zh zh-title">多模态感知与世界模型</span>
+            </h3>
+            <p>
+                <span class="lang-en">We build comprehensive world models through multimodal sensory fusion and
+                    understanding. Our research enables agents to perceive and reason about complex 3D environments
+                    using multiple modalities.</span>
+                <span class="lang-zh">我们通过多模态感知融合建立全面的世界模型。我们的研究使智能体能够使用多模态感知和推理复杂的3D环境。</span>
+            </p>
+        </div>
+        <div class="research-tags">
+            <span class="research-tag">3D Vision</span>
+            <span class="research-tag">Sensor Fusion</span>
+            <span class="research-tag">World Modeling</span>
+        </div>
+    </div>
+
+    <div class="research-item">
+        <div class="research-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                <path
+                    d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
+            </svg>
+        </div>
+        <div class="research-content">
+            <h3>
+                <span class="lang-en en-title">Spatiotemporal Decision Making</span>
+                <span class="lang-zh zh-title">时空决策与机器人策略学习</span>
+            </h3>
+            <p>
+                <span class="lang-en">We train robot policies that can make intelligent decisions in complex
+                    spatiotemporal environments. Our work bridges the gap between simulation and real-world
+                    deployment
+                    through robust policy learning.</span>
+                <span class="lang-zh">我们致力于训练能够在复杂时空环境中做出智能决策的机器人策略模型。我们的研究通过鲁棒策略学习弥合了仿真与现实部署的差距。</span>
+            </p>
+        </div>
+        <div class="research-tags">
+            <span class="research-tag">Imitation Learning</span>
+            <span class="research-tag">Reinforcement Learning</span>
+            <span class="research-tag">Sim-to-Real</span>
+        </div>
+    </div>
+
+    <div class="research-item">
+        <div class="research-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+            </svg>
+        </div>
+        <div class="research-content">
+            <h3>
+                <span class="lang-en en-title">Agent Continuous Learning</span>
+                <span class="lang-zh zh-title">智能体持续学习</span>
+            </h3>
+            <p>
+                <span class="lang-en">We enable agents to continuously learn and adapt to new environments and tasks
+                    without catastrophic forgetting. Our research addresses the fundamental challenges of lifelong
+                    learning in embodied AI.</span>
+                <span class="lang-zh">我们让智能体能够不断学习并适应新环境和新任务。我们的研究应对了具身AI的持续学习的基础挑战，从而避免灾难性遗忘。</span>
+            </p>
+        </div>
+        <div class="research-tags">
+            <span class="research-tag">Test-time Adaptation</span>
+            <span class="research-tag">Continual Learning</span>
+            <span class="research-tag">LLM Adaptation</span>
         </div>
     </div>
 </div>
@@ -502,36 +488,34 @@ layout: default
     {% endfor %}
 </ul>
 
-<div class="section-wrapper section-alt">
-    <h2 id="publications"><span class="lang-en">Selected Publications</span><span class="lang-zh">代表性成果</span></h2>
+<h2 id="publications"><span class="lang-en">Selected Publications</span><span class="lang-zh">代表性成果</span></h2>
 
-    {% assign selected_pubs = site.data.publications | where: "selected", true | sort: "date" | reverse %}
-    {% for pub in selected_pubs %}
-    <div class="publication">
-        <div class="pub-image">
-            <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}">
-        </div>
-        <div class="pub-details">
-            <p class="pub-title">{{ pub.title }}</p>
-            <p class="pub-venue">{{ pub.venue_html }}</p>
-            <div class="pub-links">
-                {% for link in pub.links %}
-                [<a href="{{ link.url }}" target="_blank">{{ link.label }}</a>]
-                {% endfor %}
-            </div>
-            <p class="pub-abstract">
-                {{ pub.abstract }}
-            </p>
-        </div>
+{% assign selected_pubs = site.data.publications | where: "selected", true | sort: "date" | reverse %}
+{% for pub in selected_pubs %}
+<div class="publication">
+    <div class="pub-image">
+        <img src="{{ site.baseurl }}/assets/images/publications/{{ pub.image }}" alt="{{ pub.title | escape }}">
     </div>
-    {% endfor %}
+    <div class="pub-details">
+        <p class="pub-title">{{ pub.title }}</p>
+        <p class="pub-venue">{{ pub.venue_html }}</p>
+        <div class="pub-links">
+            {% for link in pub.links %}
+            [<a href="{{ link.url }}" target="_blank">{{ link.label }}</a>]
+            {% endfor %}
+        </div>
+        <p class="pub-abstract">
+            {{ pub.abstract }}
+        </p>
+    </div>
+</div>
+{% endfor %}
 
-    <div class="see-all-container">
-        <a href="{{ site.baseurl }}/publications.html" class="see-all-btn">
-            <span class="lang-en">See All Publications &rarr;</span>
-            <span class="lang-zh">查看全部成果 &rarr;</span>
-        </a>
-    </div>
+<div class="see-all-container">
+    <a href="{{ site.baseurl }}/publications.html" class="see-all-btn">
+        <span class="lang-en">See All Publications &rarr;</span>
+        <span class="lang-zh">查看全部成果 &rarr;</span>
+    </a>
 </div>
 
 <h2 id="team"><span class="lang-en">Team</span><span class="lang-zh">团队</span></h2>
@@ -585,62 +569,59 @@ layout: default
         </p>
     </div>
 </div>
-</div>
 
-<div class="section-wrapper section-alt">
-    <h2 id="join-us"><span class="lang-en">Join Us</span><span class="lang-zh">加入我们</span></h2>
-    <p class="lang-en">We are always looking for passionate and talented students to join our team. If you are
-        interested in shaping the future of embodied AI, we encourage you to apply!</p>
-    <p class="lang-zh">我们一直在寻找有热情和才华的学生加入我们的团队。如果您对塑造具身人工智能的未来感兴趣，我们鼓励您申请。</p>
-    <div class="card-list-wrapper">
-        <div class="card-list">
-            <div class="card-item">
-                <h3 class="card-title">
-                    <span class="lang-en">🎓 Undergraduates</span>
-                    <span class="lang-zh">🎓 本科生</span>
-                </h3>
-                <p class="lang-en">Students with a strong background in math, AI, programming, or robotics are welcome.
-                </p>
-                <p class="lang-zh">欢迎数理或计算机基础扎实的同学加入课题组参与科研。</p>
-                <p class="contact"><span class="lang-en">📩 Contact <i>Shuzhao Xie</i></span><span class="lang-zh">📩 联系
-                        <i>谢书昭</i></span></p>
-            </div>
+<h2 id="join-us"><span class="lang-en">Join Us</span><span class="lang-zh">加入我们</span></h2>
+<p class="lang-en">We are always looking for passionate and talented students to join our team. If you are
+    interested in shaping the future of embodied AI, we encourage you to apply!</p>
+<p class="lang-zh">我们一直在寻找有热情和才华的学生加入我们的团队。如果您对塑造具身人工智能的未来感兴趣，我们鼓励您申请。</p>
+<div class="card-list-wrapper">
+    <div class="card-list">
+        <div class="card-item">
+            <h3 class="card-title">
+                <span class="lang-en">🎓 Undergraduates</span>
+                <span class="lang-zh">🎓 本科生</span>
+            </h3>
+            <p class="lang-en">Students with a strong background in math, AI, programming, or robotics are welcome.
+            </p>
+            <p class="lang-zh">欢迎数理或计算机基础扎实的同学加入课题组参与科研。</p>
+            <p class="contact"><span class="lang-en">📩 Contact <i>Shuzhao Xie</i></span><span class="lang-zh">📩 联系
+                    <i>谢书昭</i></span></p>
+        </div>
 
-            <div class="card-item">
-                <h3 class="card-title">
-                    <span class="lang-en">🔬 Masters & PhDs</span>
-                    <span class="lang-zh">🔬 硕博研究生</span>
-                </h3>
-                <p class="lang-en">Please include "Prospective Student" in your email subject with your CV and sample
-                    code/papers.</p>
-                <p class="lang-zh">发送简历及代表作，邮件标题请注 “Prospective Student”。</p>
-                <p class="contact"><span class="lang-en">📩 Contact <i>Prof. Zhi Wang</i></span><span class="lang-zh">📩
-                        联系 <i>王智教授</i></span></p>
-            </div>
+        <div class="card-item">
+            <h3 class="card-title">
+                <span class="lang-en">🔬 Masters & PhDs</span>
+                <span class="lang-zh">🔬 硕博研究生</span>
+            </h3>
+            <p class="lang-en">Please include "Prospective Student" in your email subject with your CV and sample
+                code/papers.</p>
+            <p class="lang-zh">发送简历及代表作，邮件标题请注 “Prospective Student”。</p>
+            <p class="contact"><span class="lang-en">📩 Contact <i>Prof. Zhi Wang</i></span><span class="lang-zh">📩
+                    联系 <i>王智教授</i></span></p>
+        </div>
 
-            <div class="card-item">
-                <h3 class="card-title">
-                    <span class="lang-en">🌍 Interns & Visiting</span>
-                    <span class="lang-zh">🌍 实习 / 访问学者</span>
-                </h3>
-                <p class="lang-en">We invite bright minds worldwide for cutting-edge collaborative research in embodied
-                    AI.</p>
-                <p class="lang-zh">诚邀海内外优秀学者合作交流，共同推进具身智能前沿研究。</p>
-                <p class="contact"><span class="lang-en">📩 Contact <i>Jingyan Jiang</i></span><span class="lang-zh">📩
-                        联系
-                        <i>姜婧妍</i></span></p>
-            </div>
+        <div class="card-item">
+            <h3 class="card-title">
+                <span class="lang-en">🌍 Interns & Visiting</span>
+                <span class="lang-zh">🌍 实习 / 访问学者</span>
+            </h3>
+            <p class="lang-en">We invite bright minds worldwide for cutting-edge collaborative research in embodied
+                AI.</p>
+            <p class="lang-zh">诚邀海内外优秀学者合作交流，共同推进具身智能前沿研究。</p>
+            <p class="contact"><span class="lang-en">📩 Contact <i>Jingyan Jiang</i></span><span class="lang-zh">📩
+                    联系
+                    <i>姜婧妍</i></span></p>
+        </div>
 
-            <div class="card-item">
-                <h3 class="card-title">
-                    <span class="lang-en">🤝 Corporate Collaboration</span>
-                    <span class="lang-zh">🤝 企业合作</span>
-                </h3>
-                <p class="lang-en">Open to robotics deployment and industrial technology collaborations.</p>
-                <p class="lang-zh">开放探讨大模型工业落地、前沿算法研发与核心技术转化合作。</p>
-                <p class="contact"><span class="lang-en">📩 Contact <i>Prof. Zhi Wang</i></span><span class="lang-zh">📩
-                        联系 <i>王智教授</i></span></p>
-            </div>
+        <div class="card-item">
+            <h3 class="card-title">
+                <span class="lang-en">🤝 Corporate Collaboration</span>
+                <span class="lang-zh">🤝 企业合作</span>
+            </h3>
+            <p class="lang-en">Open to robotics deployment and industrial technology collaborations.</p>
+            <p class="lang-zh">开放探讨大模型工业落地、前沿算法研发与核心技术转化合作。</p>
+            <p class="contact"><span class="lang-en">📩 Contact <i>Prof. Zhi Wang</i></span><span class="lang-zh">📩
+                    联系 <i>王智教授</i></span></p>
         </div>
     </div>
 </div>
