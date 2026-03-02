@@ -18,7 +18,6 @@ layout: default
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 4rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
@@ -142,42 +141,67 @@ layout: default
         }
     }
 
-    /* Two-column mission layout */
-    .mission-container {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
+    /* About / Mission Section */
+    .about-section {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background-color: #eef1f5;
+        padding: 4rem 2rem;
+    }
+
+    .about-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
         gap: 4rem;
-        max-width: 1100px;
-        margin: 5rem auto;
-        padding: 0 2rem;
-        align-items: start;
     }
 
-    .mission-heading-col {
-        position: relative;
+    .about-text {
+        flex: 1;
+        min-width: 0;
     }
 
-    .mission-heading {
-        font-size: 2.1rem;
-        /* Reduced from 2.5rem */
-        font-weight: 700;
-        margin: 0;
-        line-height: 1.2;
-        color: #111;
-        border: none;
+    .about-photo {
+        flex: 0 0 460px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .about-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    .about-label {
+        font-size: 1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #cc0000;
+        letter-spacing: 0.15em;
+        margin: 0 0 0.3rem 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .about-title {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #0a192f;
+        margin: 0 0 2rem 0;
+        line-height: 1.1;
         letter-spacing: -0.02em;
+        border-bottom: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        display: block;
+        text-align: left;
     }
 
-    .mission-heading::after {
+    .about-title::after,
+    .about-title::before {
         display: none;
-    }
-
-    .mission-heading-line {
-        width: 40px;
-        height: 3px;
-        background-color: #0a192f;
-        margin-top: 0.5rem;
-        border-radius: 2px;
     }
 
     .mission-text {
@@ -189,13 +213,24 @@ layout: default
     }
 
     @media screen and (max-width: 800px) {
-        .mission-container {
-            grid-template-columns: 1fr;
-            gap: 2rem;
+        .about-inner {
+            flex-direction: column;
         }
 
-        .mission-heading {
-            font-size: 1.8rem;
+        .about-photo {
+            flex: none;
+            width: 80%;
+            max-width: 460px;
+            margin: 0 auto;
+            order: -1;
+        }
+
+        .about-title {
+            font-size: 2rem;
+        }
+
+        .about-section {
+            padding: 3rem 1.5rem;
         }
     }
 </style>
@@ -234,28 +269,43 @@ layout: default
 </div>
 
 <span id="about" style="display: block; position: relative; top: -5rem; visibility: hidden;"></span>
-<div class="mission-container">
-    <div class="mission-heading-col">
-        <h2 class="mission-heading">
-            <span class="lang-en">About</span>
-            <span class="lang-zh">关于我们</span>
-        </h2>
-        <div class="mission-heading-line"></div>
-    </div>
-    <div class="mission-text-col">
-        <p class="mission-text">
-            <span class="lang-en">We are a dynamic research collective at the forefront of artificial intelligence. Our
-                vision is to create intelligent agents capable of perceiving, reasoning, and acting in complex
-                real-world environments — agents that continuously learn and adapt, seamlessly bridging the digital and
-                physical worlds.
-                <br><br>
-                By integrating cutting-edge research in 3D vision, world models, and large language models, we are
-                building the foundation for the next generation of intelligent systems. We are always looking for
-                motivated PhD students, postdocs, and research assistants who share our interest.</span>
-            <span class="lang-zh">我们是一个走在人工智能前沿的充满活力的研究集体。我们的愿景是创造能够在复杂的现实世界环境中感知、推理和行动的智能体——能够持续学习和适应，无缝连接数字与物理世界的智能体。
-                <br><br>
-                通过整合3D视觉、世界模型和大型语言模型领域的最前沿研究，我们正在为下一代智能系统奠定基础。我们随时欢迎有动力的博士生、博士后和研究助理加入我们。</span>
-        </p>
+<div class="about-section">
+    <div class="about-inner">
+        <div class="about-text">
+            <p class="about-label">
+                <span class="lang-en">About</span>
+                <span class="lang-zh">关于我们</span>
+            </p>
+            <h2 class="about-title">MMLab@SIGS</h2>
+            <p class="mission-text">
+                <span class="lang-en">We are a dynamic research collective at the forefront of artificial intelligence,
+                    dedicated to solving the fundamental challenges of embodied intelligence. Our vision is to create
+                    self-evolving agents capable of perceiving, reasoning, and acting in complex, real-world
+                    environments—agents that continuously learn and adapt to seamlessly bridge the digital and physical
+                    worlds.
+                    <br><br>
+                    Our mission is to establish a complete pipeline for these agents, forming a closed loop of efficient
+                    data preparation, multimodal perception, spatiotemporal decision-making, and continuous learning. By
+                    integrating cutting-edge research in 3D vision, world models, and large language models, we are
+                    building the foundation for the next generation of intelligent systems.
+                    <br><br>
+                    We are always looking for motivated PhD students, postdocs, and research assistants who share our
+                    vision. Check out the <a href="#join-us"
+                        onclick="document.getElementById('join-us').scrollIntoView({behavior: 'smooth'}); return false;">Join
+                        Us</a> section and follow us on
+                    Wechat.</span>
+                <span
+                    class="lang-zh">我们是一个走在人工智能前沿的充满活力的研究集体，致力于解决具身智能的根本挑战。我们的愿景是创造能够在复杂的现实世界环境中感知、推理和行动的自我进化智能体——能够持续学习和适应，无缝连接数字与物理世界的智能体。
+                    <br><br>
+                    我们的使命是为这些智能体建立一个完整的创建流程，形成高效数据制备、多模态感知、时空决策和持续学习的闭环。通过整合3D视觉、世界模型和大型语言模型领域的最前沿研究，我们正在为下一代智能系统奠定基础。
+                    <br><br>
+                    我们随时欢迎有共同愿景的博士生、博士后和研究助理加入我们。请查看我们的<a href="#join-us"
+                        onclick="document.getElementById('join-us').scrollIntoView({behavior: 'smooth'}); return false;">加入我们</a>栏目并关注我们的微信公众号。</span>
+            </p>
+        </div>
+        <div class="about-photo">
+            <img src="{{ site.baseurl }}/assets/images/about_photo.jpg" alt="Lab Photo">
+        </div>
     </div>
 </div>
 
@@ -552,29 +602,189 @@ layout: default
     <!-- Add more PIs here if needed -->
 </div>
 
-<!-- Rest of team... (Placeholder for brevity in this modification logic, wait, this needs to be precise. I should only replace the span anchor and add the script.) -->
-</div>
-
-<!-- Jingyan Jiang -->
-<div class="team-member">
-    <img src="{{ site.baseurl }}/assets/images/team/jingyan_jiang.jpg" alt="Jingyan Jiang" class="team-photo"
-        loading="lazy" style="object-position: 70% 20%;">
-    <div class="team-info">
-        <h4>Jingyan Jiang (姜婧妍)</h4>
-        <p>
-            <span class="lang-en">Researcher</span>
-            <span class="lang-zh">研究员</span>
-        </p>
-        <p>
-            <a href="https://www.jiangjingyan.com/" target="_blank">
-                <span class="lang-en">Personal Website</span>
-                <span class="lang-zh">个人主页</span>
-            </a> |
-            <span class="lang-en">Email: jiangjingyanjlu@gmail.com</span>
-            <span class="lang-zh">邮箱: jiangjingyanjlu@gmail.com</span>
-        </p>
+<h3 style="margin-top: 1rem;"><span class="lang-en">Researcher</span><span class="lang-zh">研究员</span></h3>
+<div class="team-section">
+    <!-- Jingyan Jiang -->
+    <div class="team-member">
+        <img src="{{ site.baseurl }}/assets/images/team/jingyan_jiang.jpg" alt="Jingyan Jiang" class="team-photo"
+            loading="lazy" style="object-position: 70% 20%;">
+        <div class="team-info">
+            <h4>Jingyan Jiang (姜婧妍)</h4>
+            <p>
+                <span class="lang-en">Researcher</span>
+                <span class="lang-zh">研究员</span>
+            </p>
+            <p>
+                <a href="https://www.jiangjingyan.com/" target="_blank">
+                    <span class="lang-en">Personal Website</span>
+                    <span class="lang-zh">个人主页</span>
+                </a> |
+                <span class="lang-en">Email: jiangjingyanjlu@gmail.com</span>
+                <span class="lang-zh">邮箱: jiangjingyanjlu@gmail.com</span>
+            </p>
+        </div>
     </div>
 </div>
+
+<h3 style="margin-top: 2rem;"><span class="lang-en">Ph.D. Students</span><span class="lang-zh">博士研究生</span></h3>
+<div class="student-grid">
+    <div class="student-item">
+        <a href="https://shuzhaoxie.github.io/" target="_blank"><span class="lang-en">Shuzhao Xie</span><span
+                class="lang-zh">解书照</span></a>
+        <span class="student-period">(2023-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Xiao Chen</span><span class="lang-zh">陈骁</span>
+        <span class="student-period">(2025-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Xiao Fan</span><span class="lang-zh">范潇</span>
+        <span class="student-period">(2026-)</span>
+    </div>
+    <div class="student-item">
+        <a href="https://yu2hi13.github.io/" target="_blank"><span class="lang-en">Yuzhi Huang</span><span
+                class="lang-zh">黄誉之</span></a>
+        <span class="student-period">(2026-)</span>
+    </div>
+</div>
+
+<h3 style="margin-top: 1.5rem;"><span class="lang-en">Master Students</span><span class="lang-zh">硕士研究生</span></h3>
+<div class="student-grid">
+    <div class="student-item">
+        <span class="lang-en">Siqi Chen</span><span class="lang-zh">陈思琪</span>
+        <span class="student-period">(2023-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Shijia Ge</span><span class="lang-zh">葛士嘉</span>
+        <span class="student-period">(2023-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Qinting Jiang</span><span class="lang-zh">蒋沁廷</span>
+        <span class="student-period">(2023-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Xiaojie Li</span><span class="lang-zh">李孝杰</span>
+        <span class="student-period">(2023-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Chenghao Gu</span><span class="lang-zh">顾程皓</span>
+        <span class="student-period">(2024-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Fanding Huang</span><span class="lang-zh">黄凡丁</span>
+        <span class="student-period">(2024-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Letian Li</span><span class="lang-zh">李乐天</span>
+        <span class="student-period">(2024-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Junchen Ge</span><span class="lang-zh">葛俊辰</span>
+        <span class="student-period">(2025-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Hanglei Jin</span><span class="lang-zh">金航磊</span>
+        <span class="student-period">(2025-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Fengnian Yang</span><span class="lang-zh">杨丰年</span>
+        <span class="student-period">(2025-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Zhengqi Zhang</span><span class="lang-zh">张正奇</span>
+        <span class="student-period">(2025-)</span>
+    </div>
+    <div class="student-item">
+        <span class="lang-en">Jiazhen Huang</span><span class="lang-zh">黄嘉桢</span>
+        <span class="student-period">(2026-)</span>
+    </div>
+</div>
+
+<div class="carousel-container" id="teamCarousel">
+    <div class="carousel-track" id="carouselTrack">
+        <!-- Add more photos here. Recommended naming convention: group_photo_1.jpg, group_photo_2.jpg, etc. -->
+        <img src="{{ site.baseurl }}/assets/images/team/group_photo.jpg" alt="Team Group Photo 1" class="carousel-img"
+            loading="lazy">
+        <img src="{{ site.baseurl }}/assets/images/team/group_photo2.jpg" alt="Team Group Photo 2" class="carousel-img"
+            loading="lazy">
+        <img src="{{ site.baseurl }}/assets/images/team/group_photo3.jpg" alt="Team Group Photo 3" class="carousel-img"
+            loading="lazy">
+    </div>
+
+    <button class="carousel-btn carousel-prev" id="carouselPrev">&#10094;</button>
+    <button class="carousel-btn carousel-next" id="carouselNext">&#10095;</button>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+</div>
+
+<script>
+    /* Simple carousel — no clones, just index-based sliding */
+    (function () {
+        var track = document.getElementById('carouselTrack');
+        var container = document.getElementById('teamCarousel');
+        var prevBtn = document.getElementById('carouselPrev');
+        var nextBtn = document.getElementById('carouselNext');
+        var dotsBox = document.getElementById('carouselDots');
+
+        if (!track || !container || !prevBtn || !nextBtn) return;
+
+        var imgs = track.querySelectorAll('.carousel-img');
+        var total = imgs.length;
+        if (total === 0) return;
+
+        var idx = 0;
+
+        /* Size each image and track */
+        track.style.display = 'flex';
+        track.style.width = (total * 100) + '%';
+        track.style.transition = 'transform 0.5s ease';
+        for (var i = 0; i < total; i++) {
+            imgs[i].style.width = (100 / total) + '%';
+            imgs[i].style.flexShrink = '0';
+        }
+
+        function go(animate) {
+            if (animate !== false) {
+                track.style.transition = 'transform 0.5s ease';
+            } else {
+                track.style.transition = 'none';
+            }
+            var pct = idx * (100 / total);
+            track.style.transform = 'translateX(-' + pct + '%)';
+            /* dots */
+            var dots = dotsBox.children;
+            for (var d = 0; d < dots.length; d++) {
+                dots[d].style.background = (d === idx) ? '#ffffff' : 'rgba(255,255,255,0.4)';
+                dots[d].style.transform = (d === idx) ? 'scale(1.2)' : 'scale(1)';
+            }
+        }
+
+        /* Build dots */
+        for (var j = 0; j < total; j++) {
+            var dot = document.createElement('span');
+            dot.style.cssText = 'display:inline-block;width:10px;height:10px;border-radius:50%;cursor:pointer;transition:all 0.3s;margin:0 5px;';
+            (function (n) { dot.onclick = function () { idx = n; go(true); }; })(j);
+            dotsBox.appendChild(dot);
+        }
+
+        go(false); /* initial position */
+
+        /* button handlers */
+        nextBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            idx = (idx + 1) % total;
+            go(true);
+        };
+        prevBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            idx = (idx - 1 + total) % total;
+            go(true);
+        };
+
+    })();
+</script>
 
 <h2 id="join-us"><span class="lang-en">Join Us</span><span class="lang-zh">加入我们</span></h2>
 <p class="lang-en">We are always looking for passionate and talented students to join our team. If you are
