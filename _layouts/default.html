@@ -257,11 +257,15 @@
             border: 1px solid #eee;
             background: #ffffff;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            transition: border-color 0.15s ease;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transform: translateZ(0);
+            /* Hardware acceleration */
+            will-change: transform, box-shadow;
         }
 
         .publication:hover {
-            border-color: #ccc;
+            border-color: #e0e0e0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
         }
 
         .pub-image {
